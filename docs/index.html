@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IA Local Segura en Apple — el ebook para poner la IA a trabajar dentro de sus Mac</title>
+<meta name="description" content="Cómo poner la inteligencia artificial a correr dentro de los Mac que su empresa ya tiene: sin conexión, sin licencia por usuario y sin que salga un solo dato. Lanzamiento limitado: las primeras 20 reservas pagan USD 10." />
+<link rel="canonical" href="https://keepsync-hub.github.io/apple-ia-local-segura/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es_LA" />
+<meta property="og:site_name" content="Rodrigo Figueroa" />
+<meta property="og:title" content="IA Local Segura en Apple — el ebook" />
+<meta property="og:description" content="El modelo corre dentro del Mac: sin internet, sin licencia por usuario y sin fuga de información. Primeras 20 reservas: USD 10 en vez de USD 25." />
+<meta property="og:url" content="https://keepsync-hub.github.io/apple-ia-local-segura/" />
+<meta property="og:image" content="https://keepsync-hub.github.io/apple-ia-local-segura/assets/og.png" />
+<meta property="og:image:alt" content="IA Local Segura en Apple, ebook de Rodrigo Figueroa" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b1017'/><rect x='9' y='9' width='14' height='14' rx='3.4' fill='%2322d3ee'/><rect x='13' y='13' width='6' height='6' rx='1.4' fill='%230b1017'/><g stroke='%2322d3ee' stroke-width='2' stroke-linecap='round'><path d='M13 6v3M19 6v3M13 23v3M19 23v3M6 13h3M6 19h3M23 13h3M23 19h3'/></g></svg>" />
+<link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+<a class="skip" href="#reservar">Ir al formulario de reserva</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <span class="brand"><img class="brand-foto" src="assets/rodrigo-avatar.jpg" width="64" height="64" alt="" /> Rodrigo Figueroa</span>
+    <a class="topbar-cta" href="#reservar">Reservar<span class="cta-precio"> por <b>USD&nbsp;10</b></span></a>
+  </div>
+</header>
+
+<main>
+
+<!-- ─────────────────────────  1. HERO + OFERTA + FORM  ───────────────────────── -->
+<section class="hero">
+  <div class="wrap hero-grid">
+
+    <div class="hero-copy">
+      <p class="eyebrow">Nuevo ebook de Rodrigo Figueroa</p>
+      <h1>Sus Mac ya tienen todo para usar IA.<br /><em>Falta encenderla, puertas adentro.</em></h1>
+      <p class="lead">
+        Cada Mac con chip de Apple que su empresa compró trae la memoria y el motor necesarios para
+        <strong>correr el modelo adentro, sin conexión y sin mandarle nada a nadie</strong>. No hay
+        suscripción por usuario ni servidor que arrendar: el trabajo ocurre en el equipo que la persona
+        ya tiene sobre el escritorio. Este ebook explica cómo dejarlo andando y cómo defenderlo ante TI.
+      </p>
+
+      <ul class="hero-points">
+        <li>El modelo corre <b>dentro del Mac</b>, no en la nube de un tercero</li>
+        <li>Sigue funcionando <b>con el Wi-Fi apagado</b>, en los equipos que ya compró</li>
+        <li>Una ruta de lectura para <b>directivos</b> y otra para <b>equipos técnicos</b></li>
+      </ul>
+
+      <div class="offer" id="oferta">
+        <div class="offer-price">
+          <span class="price-old">USD&nbsp;25</span>
+          <span class="price-new">USD&nbsp;10</span>
+        </div>
+        <div class="offer-text">
+          <p class="offer-head">Precio de lanzamiento para las primeras <b>20 reservas</b>.</p>
+          <p class="offer-count" data-cupos>Solo 20 copias a este precio.</p>
+        </div>
+      </div>
+
+      <div id="reservar" class="form-anchor"></div>
+      <!-- El formulario se repite al cierre de la página: mismo componente, mismo JS. -->
+      <form class="reserva" data-origen="hero" novalidate>
+        <h2 class="form-title">Reserve su copia a USD 10</h2>
+
+        <div class="field-row">
+          <label class="field">
+            <span>Nombre y apellido</span>
+            <input type="text" name="nombre" autocomplete="name" required />
+          </label>
+          <label class="field">
+            <span>Correo corporativo</span>
+            <input type="email" name="email" autocomplete="email" inputmode="email" required />
+          </label>
+        </div>
+
+        <!-- Trampa para bots: si viene con algo, n8n descarta la petición sin ejecutar nada. -->
+        <div class="hp" aria-hidden="true">
+          <label>No complete este campo
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </label>
+        </div>
+
+        <label class="consent">
+          <input type="checkbox" name="consentimiento" required />
+          <span>Acepto que me escriban para coordinar el pago y la entrega del ebook.</span>
+        </label>
+
+        <button type="submit" class="btn-primary">Reservar mi copia por USD&nbsp;10</button>
+
+        <p class="microcopy">
+          <b>No se cobra nada ahora.</b> Le llega un correo con el link de pago y tiene
+          <b>48 horas</b> para completarlo. Pasado ese plazo el cupo se libera para la siguiente persona.
+        </p>
+
+        <p class="form-status" role="status" aria-live="polite"></p>
+
+        <noscript>
+          <p class="microcopy">
+            Su navegador tiene JavaScript desactivado y el formulario lo necesita para tomar su reserva.
+            Actívelo y recargue la página, o
+            <a href="https://wa.me/56982504273?text=Hola%20Rodrigo%2C%20vengo%20de%20la%20p%C3%A1gina%20del%20ebook%20IA%20Local%20Segura%20en%20Apple%20y%20tengo%20una%20consulta." target="_blank" rel="noopener noreferrer">escríbale a Rodrigo
+            por WhatsApp</a> y la tomamos a mano.
+          </p>
+        </noscript>
+      </form>
+    </div>
+
+    <div class="hero-cover">
+      <div class="book">
+        <svg class="book-face" viewBox="0 0 420 560" role="img" aria-label="Portada del ebook IA Local Segura en Apple">
+          <defs>
+            <linearGradient id="g-cover" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#101b28" /><stop offset="0.55" stop-color="#0c1420" /><stop offset="1" stop-color="#140f22" />
+            </linearGradient>
+            <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#22d3ee" /><stop offset="1" stop-color="#a78bfa" />
+            </linearGradient>
+            <radialGradient id="g-glow" cx="0.72" cy="0.26" r="0.6">
+              <stop offset="0" stop-color="#22d3ee" stop-opacity="0.28" /><stop offset="1" stop-color="#22d3ee" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+
+          <rect width="420" height="560" fill="url(#g-cover)" />
+          <rect width="420" height="560" fill="url(#g-glow)" />
+          <rect x="0" y="0" width="9" height="560" fill="url(#g-accent)" opacity="0.85" />
+
+          <!-- retícula tenue: alude al perímetro del equipo -->
+          <g stroke="#294055" stroke-width="0.7" opacity="0.5">
+            <path d="M44 0v560M420 132H44M420 428H44" />
+          </g>
+
+          <text x="44" y="86" fill="#7f96ad" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" letter-spacing="3.4">EBOOK</text>
+
+          <!-- el chip: todo el trabajo ocurre acá adentro -->
+          <g transform="translate(290 176)">
+            <g stroke="url(#g-accent)" stroke-width="6" stroke-linecap="round">
+              <path d="M-16 -54v-14M2 -54v-14M20 -54v-14M-16 54v14M2 54v14M20 54v14" />
+              <path d="M-54 -16h-14M-54 2h-14M-54 20h-14M54 -16h14M54 2h14M54 20h14" />
+            </g>
+            <rect x="-54" y="-54" width="108" height="108" rx="24" fill="url(#g-accent)" />
+            <rect x="-24" y="-24" width="48" height="48" rx="12" fill="#0c1420" />
+          </g>
+
+          <text x="44" y="286" fill="#f1f6fb" font-family="ui-sans-serif,system-ui,sans-serif" font-size="66" font-weight="800" letter-spacing="-1.6">IA LOCAL</text>
+          <text x="44" y="352" fill="#f1f6fb" font-family="ui-sans-serif,system-ui,sans-serif" font-size="66" font-weight="800" letter-spacing="-1.6">SEGURA</text>
+          <text x="44" y="404" fill="#a78bfa" font-family="ui-sans-serif,system-ui,sans-serif" font-size="33" font-weight="700" letter-spacing="5">EN APPLE</text>
+
+          <text x="44" y="468" fill="#9fb3c8" font-family="ui-sans-serif,system-ui,sans-serif" font-size="17">El modelo corre dentro del Mac:</text>
+          <text x="44" y="494" fill="#9fb3c8" font-family="ui-sans-serif,system-ui,sans-serif" font-size="17">sin internet y sin fuga de información.</text>
+          <text x="44" y="536" fill="#a78bfa" font-family="ui-sans-serif,system-ui,sans-serif" font-size="18" font-weight="700" letter-spacing="1.2">RODRIGO FIGUEROA</text>
+        </svg>
+        <div class="book-edge" aria-hidden="true"></div>
+      </div>
+      <p class="cover-note">Edición de lanzamiento · PDF y EPUB</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─────────────────────────  2. EL CONTRASTE  ───────────────────────── -->
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">El punto ciego</p>
+    <h2 class="h2">Su gente ya usa IA en el Mac. La pregunta es dónde queda lo que escribe.</h2>
+    <div class="contrast">
+      <article class="card card-bad">
+        <h3><span class="tag tag-bad">Hoy, sin permiso</span></h3>
+        <p>
+          Alguien abre el navegador, pega un contrato, una planilla de sueldos o el listado de clientes
+          en un chatbot público y pide un resumen. Funciona. Y esa información acaba de salir de la compañía
+          desde un equipo corporativo.
+        </p>
+        <ul>
+          <li>Sin contrato, sin trazabilidad, sin registro de qué se envió</li>
+          <li>El Mac queda de simple terminal de un servicio ajeno</li>
+          <li>Imposible de auditar y de explicar en un comité</li>
+        </ul>
+      </article>
+      <article class="card card-good">
+        <h3><span class="tag tag-good">Con este enfoque</span></h3>
+        <p>
+          El mismo resumen, pero el modelo vive <b>en el disco de ese Mac</b> y el trabajo ocurre en su
+          propio chip. El texto nunca sale por la red. No hay proveedor al que reclamarle porque no hay
+          proveedor.
+        </p>
+        <ul>
+          <li>El perímetro es el equipo que usted ya administra e inventaría</li>
+          <li>Responde con el equipo desconectado de internet</li>
+          <li>Sin licencia por usuario: ya está pagado con el hardware</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────  3. POR QUÉ EN APPLE  ───────────────────────── -->
+<section class="band band-alt">
+  <div class="wrap">
+    <p class="kicker">Lo que cambia</p>
+    <h2 class="h2">Sin proyecto de seis meses. Sin una sola compra.</h2>
+    <p class="band-lead">
+      En los Mac con chip de Apple, el procesador, la GPU y el Neural Engine comparten una misma
+      <b>memoria unificada</b>. Por eso un modelo que en otros equipos exige una tarjeta de video aparte
+      acá cabe en la memoria que el Mac ya trae, y responde con el ventilador tranquilo. Eso es lo que
+      convierte un parque de Mac ya pagado en la infraestructura de IA de la empresa.
+    </p>
+    <ol class="steps">
+      <li>
+        <span class="step-n">1</span>
+        <h3>Se instala en los Mac actuales</h3>
+        <p>Un paquete firmado que se despliega desde la misma consola de gestión con la que TI ya instala el resto del software corporativo.</p>
+      </li>
+      <li>
+        <span class="step-n">2</span>
+        <h3>El modelo queda en el disco</h3>
+        <p>Se descarga una vez y se guarda en el disco del equipo, ya cifrado por FileVault. Desde ahí el Mac puede quedar sin conexión y la herramienta sigue respondiendo.</p>
+      </li>
+      <li>
+        <span class="step-n">3</span>
+        <h3>La persona delega lo repetitivo</h3>
+        <p>Resumir, ordenar, clasificar, redactar, extraer datos de documentos. Todo dentro del equipo. Eso deja de consumir su jornada.</p>
+      </li>
+    </ol>
+    <p class="band-foot">
+      <b>¿Y cómo se hace, exactamente?</b> Eso es el ebook: qué modelo elegir según la memoria de cada Mac,
+      cómo empaquetarlo y desplegarlo, y cómo dejarlo funcionando sin tocar una sola política de seguridad.
+      Escrito para que su propio equipo lo ejecute sin contratar a nadie.
+    </p>
+  </div>
+</section>
+
+<!-- ─────────────────────────  4. LA PLATAFORMA  ───────────────────────── -->
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">Seguridad</p>
+    <h2 class="h2">Lo que la plataforma Apple ya trae puesto, trabajando a favor</h2>
+    <p class="band-lead">
+      No hay que pedirle una excepción a la política de seguridad. La IA local <b>se apoya en los mismos
+      mecanismos</b> que su organización ya tiene activados en cada equipo. El ebook desarrolla cada uno
+      con el detalle que pide un auditor.
+    </p>
+    <div class="table-scroll">
+      <table class="iso">
+        <caption class="sr-only">Piezas de la plataforma Apple y qué aportan a la IA que corre dentro del equipo</caption>
+        <thead>
+          <tr><th scope="col">Pieza</th><th scope="col">Qué pone sobre la mesa</th><th scope="col">Qué significa para la IA local</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Chip de Apple</th>
+            <td>CPU, GPU y Neural Engine sobre una memoria unificada</td>
+            <td>El modelo trabaja con la memoria que el equipo ya tiene: no hay que comprar una tarjeta de video ni arrendar un servidor.</td>
+          </tr>
+          <tr>
+            <th scope="row">FileVault</th>
+            <td>Cifrado del disco completo</td>
+            <td>El modelo y todo lo que la persona le pasa quedan dentro de un disco que ya está cifrado, sin agregar un solo control nuevo.</td>
+          </tr>
+          <tr>
+            <th scope="row">Secure Enclave</th>
+            <td>Las claves del equipo, aisladas del resto del sistema</td>
+            <td>Las credenciales siguen donde estaban: correr un modelo en local no abre una vía nueva hacia ellas.</td>
+          </tr>
+          <tr>
+            <th scope="row">Gatekeeper y notarización</th>
+            <td>Solo se ejecuta software firmado y verificado</td>
+            <td>Lo que se instala pasa por el mismo filtro que cualquier otra app corporativa, y queda igual de trazable.</td>
+          </tr>
+          <tr>
+            <th scope="row">MDM y gestión declarativa</th>
+            <td>Despliegue, inventario y control de configuración</td>
+            <td>Se instala, se actualiza y se retira desde la consola que TI ya opera, con el control de cambios de siempre.</td>
+          </tr>
+          <tr>
+            <th scope="row">Permisos de macOS</th>
+            <td>Cada app pide acceso a archivos, cámara y micrófono</td>
+            <td>La herramienta llega hasta donde usted la deje llegar, y ese alcance queda escrito y revisable.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="band-foot">
+      Y el argumento que cierra la conversación en un comité: <b>la alternativa no es «nada de IA»</b>.
+      La alternativa es la IA que su gente ya está usando por fuera, desde esos mismos equipos, sin control.
+      <br />¿Necesita además el mapa control por control contra ISO/IEC 27001?
+      <a href="https://keepsync-hub.github.io/ebook-ia-segura-iso27001/">Ese es el otro ebook</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ─────────────────────────  5. CASO RICOH LATAM  ───────────────────────── -->
+<section class="band band-case">
+  <div class="wrap case">
+    <p class="kicker">Caso real</p>
+    <h2 class="h2">Ricoh LATAM: de horas de trabajo manual a decisiones basadas en datos</h2>
+    <p>
+      En Ricoh LATAM el problema no era la falta de datos, sino el tiempo que costaba ordenarlos. Tareas
+      administrativas, manuales y repetitivas sobre información <b>simple en lo técnico pero clave en lo
+      estratégico</b>: los datos con los que efectivamente se toman decisiones de negocio.
+    </p>
+    <p>
+      Al delegar ese trabajo a una herramienta que corre dentro del propio computador, esas horas desaparecieron del calendario
+      de las personas. Lo que quedó fue agilidad, rapidez y certeza sobre la información —sin que un solo
+      dato tuviera que salir de la compañía para lograrlo.
+    </p>
+    <blockquote>
+      <p>
+        La propuesta de valor de Ricoh se llama <b><em>fulfillment through work</em></b>: la realización a
+        través del trabajo. Aumentar las capacidades de cada persona, delegar lo repetitivo a la tecnología
+        y liberar su imaginación para co-crear cosas nuevas. Esto no reemplaza a nadie: le devuelve
+        a la gente las horas que la organización estaba gastando en tareas que nadie quería hacer.
+      </p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ─────────────────────────  6. QUÉ HAY ADENTRO  ───────────────────────── -->
+<section class="band band-alt">
+  <div class="wrap">
+    <p class="kicker">Contenido</p>
+    <h2 class="h2">Dos rutas de lectura en un mismo libro</h2>
+    <p class="band-lead">
+      Cada capítulo está marcado. Un gerente puede leer solo su ruta y salir con criterio para decidir;
+      el equipo de TI encuentra el detalle de implementación en la suya.
+    </p>
+    <ol class="toc">
+      <li><span class="route route-exec">Ejecutiva</span><b>El riesgo que ya está corriendo</b><span>Shadow AI, qué se está enviando hoy desde los equipos de la empresa y por qué nadie lo ve.</span></li>
+      <li><span class="route route-exec">Ejecutiva</span><b>El parque de Mac ya pagado es la respuesta</b><span>Por qué esto no es una compra nueva ni una licencia por usuario, y cómo se presenta así en un comité.</span></li>
+      <li><span class="route route-both">Ambas</span><b>Qué modelo va en qué Mac</b><span>Cómo leer la memoria unificada de cada equipo y elegir el modelo que le calza, con una tabla de decisión.</span></li>
+      <li><span class="route route-tech">Técnica</span><b>La instalación, paso a paso</b><span>Empaquetar, firmar y desplegar por MDM sobre los equipos actuales sin romper nada de lo que ya funciona.</span></li>
+      <li><span class="route route-tech">Técnica</span><b>Dejarlo andando sin conexión</b><span>Cómo queda el modelo en disco, cómo convive con FileVault, Gatekeeper y los permisos, y cómo se actualiza.</span></li>
+      <li><span class="route route-both">Ambas</span><b>Las primeras diez tareas a delegar</b><span>Dónde aparece el retorno en las primeras semanas, con ejemplos tomados del día a día.</span></li>
+      <li><span class="route route-exec">Ejecutiva</span><b>Cómo medirlo y cómo contarlo</b><span>Indicadores, y cómo presentar el avance al directorio.</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ─────────────────────────  7. FAQ + CIERRE  ───────────────────────── -->
+<section class="band">
+  <div class="wrap">
+    <p class="kicker">Preguntas frecuentes</p>
+    <h2 class="h2">Lo que suelen preguntar antes de reservar</h2>
+    <div class="faq">
+      <details>
+        <summary>¿Sirven los Mac que ya tenemos?</summary>
+        <p>En general sí. Los Mac con chip de Apple son los que mejor rinden, y desde 16 GB de memoria unificada el margen es cómodo; con 8 GB se trabaja con modelos más compactos, que para resumir y redactar alcanzan de sobra. Los Mac con procesador Intel también pueden correr modelos pequeños, más lento. El libro trae la tabla para revisar su parque equipo por equipo y decidir qué le toca a cada uno.</p>
+      </details>
+      <details>
+        <summary>¿Esto es Apple Intelligence?</summary>
+        <p>No, y conviene tener clara la diferencia. Apple Intelligence resuelve parte del trabajo en el dispositivo y deriva lo más pesado a los servidores de Private Cloud Compute, y con su permiso puede pasarle una consulta a un servicio externo. Acá el modelo completo vive en el disco del Mac y nada sale del equipo. Pueden convivir sin problema: el libro explica dónde conviene cada uno.</p>
+      </details>
+      <details>
+        <summary>¿Funciona realmente sin internet?</summary>
+        <p>Sí. La conexión se necesita una vez, para descargar el modelo e instalarlo. Después el Mac puede quedar aislado —Wi-Fi apagado, en un avión, en una faena sin señal— y la herramienta sigue respondiendo, porque todo el trabajo ocurre dentro de ese equipo.</p>
+      </details>
+      <details>
+        <summary>¿Cuánto ocupa en el disco?</summary>
+        <p>Entre unos 2 y 20 GB según el modelo que elija para cada equipo. Es un archivo más en un disco que ya está cifrado, y se puede retirar desde la consola de gestión igual que cualquier otra app.</p>
+      </details>
+      <details>
+        <summary>¿Cómo lo defiendo ante TI o en una auditoría?</summary>
+        <p>Con los controles que ya tiene activados: despliegue por MDM, software firmado y notarizado, disco cifrado, inventario y control de cambios. El libro incluye el detalle de cada punto. Si además necesita el mapa control por control contra el Anexo A de ISO/IEC 27001:2022, ese es el otro ebook, <a href="https://keepsync-hub.github.io/ebook-ia-segura-iso27001/">IA Segura ISO 27001</a>.</p>
+      </details>
+      <details>
+        <summary>¿Y los iPhone y iPad de la empresa?</summary>
+        <p>El libro se centra en los Mac, que es donde hoy se hace el trabajo pesado con documentos y planillas. Hay un apartado sobre qué se puede esperar de un iPhone o un iPad y qué conviene dejar en el computador.</p>
+      </details>
+      <details>
+        <summary>¿Esto reemplaza a mi gente?</summary>
+        <p>No: les devuelve horas. Lo que se delega son las tareas administrativas y repetitivas que hoy consumen jornadas completas. Lo que queda para las personas es el criterio, la decisión y la creación, que es exactamente donde la organización necesita que estén.</p>
+      </details>
+      <details>
+        <summary>¿Qué incluye los USD 10 y cómo pago?</summary>
+        <p>El ebook completo en PDF y EPUB, más las actualizaciones de esta edición. Al reservar no se cobra nada: le llega un correo con el link de pago y usted decide ahí. El precio de USD 10 solo aplica a las primeras 20 reservas; después el libro queda en su precio normal de USD 25.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa si no pago dentro de las 48 horas?</summary>
+        <p>El cupo se libera y pasa a la siguiente persona en la fila. No se le cobra nada ni queda ningún compromiso pendiente: puede volver a comprar más adelante al precio vigente en ese momento.</p>
+      </details>
+      <details>
+        <summary>¿Cuándo lo recibo?</summary>
+        <p>Apenas confirmamos el pago le llega el enlace de descarga al mismo correo con el que reservó.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band band-autor">
+  <div class="wrap autor">
+    <img class="autor-foto" src="assets/rodrigo.jpg" width="400" height="400"
+         alt="Retrato de Rodrigo Figueroa" loading="lazy" decoding="async" />
+    <div class="autor-texto">
+      <p class="kicker">Quién lo escribe</p>
+      <h2 class="h2">Rodrigo Figueroa</h2>
+      <p>
+        Escribí este libro para que lo pueda leer tanto quien aprueba el presupuesto como quien lo va a
+        implementar: cada capítulo viene marcado con su ruta, y ninguna de las dos necesita a la otra
+        para avanzar.
+      </p>
+      <p>
+        Si tiene una duda antes de reservar —sobre los Mac que ya tiene, sobre cómo desplegarlo por MDM,
+        sobre lo que sea— escríbame directo. Contesto yo.
+      </p>
+      <a class="autor-wa" href="https://wa.me/56982504273?text=Hola%20Rodrigo%2C%20vengo%20de%20la%20p%C3%A1gina%20del%20ebook%20IA%20Local%20Segura%20en%20Apple%20y%20tengo%20una%20consulta." target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+        Escríbame por WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band band-close">
+  <div class="wrap close">
+    <h2 class="h2">Quedan copias al precio de lanzamiento</h2>
+    <p class="close-lead" data-cupos>20 copias a USD 10. Después, USD 25.</p>
+
+    <form class="reserva" data-origen="cierre" novalidate>
+      <div class="field-row">
+        <label class="field">
+          <span>Nombre y apellido</span>
+          <input type="text" name="nombre" autocomplete="name" required />
+        </label>
+        <label class="field">
+          <span>Correo corporativo</span>
+          <input type="email" name="email" autocomplete="email" inputmode="email" required />
+        </label>
+      </div>
+
+      <div class="hp" aria-hidden="true">
+        <label>No complete este campo
+          <input type="text" name="website" tabindex="-1" autocomplete="off" />
+        </label>
+      </div>
+
+      <label class="consent">
+        <input type="checkbox" name="consentimiento" required />
+        <span>Acepto que me escriban para coordinar el pago y la entrega del ebook.</span>
+      </label>
+
+      <button type="submit" class="btn-primary">Reservar mi copia por USD&nbsp;10</button>
+      <p class="microcopy"><b>No se cobra nada ahora.</b> El link de pago llega por correo y tiene 48 horas para usarlo.</p>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <p><span class="brand"><img class="brand-foto" src="assets/rodrigo-avatar.jpg" width="64" height="64" alt="" /> Rodrigo Figueroa</span></p>
+    <p class="footer-note">
+      Guardamos su nombre y su correo con un único fin: coordinar el pago y la entrega del
+      ebook. No compartimos esos datos con terceros. Si quiere que los borremos,
+      <a href="https://wa.me/56982504273?text=Hola%20Rodrigo%2C%20vengo%20de%20la%20p%C3%A1gina%20del%20ebook%20IA%20Local%20Segura%20en%20Apple%20y%20tengo%20una%20consulta." target="_blank" rel="noopener noreferrer">escríbale a Rodrigo por
+      WhatsApp</a> y se borran.
+    </p>
+    <p class="footer-note">
+      Apple, Mac, macOS y Apple Intelligence son marcas registradas de Apple Inc. Este ebook es un
+      trabajo independiente y no está afiliado a Apple Inc. ni patrocinado por ella.
+    </p>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/56982504273?text=Hola%20Rodrigo%2C%20vengo%20de%20la%20p%C3%A1gina%20del%20ebook%20IA%20Local%20Segura%20en%20Apple%20y%20tengo%20una%20consulta." target="_blank" rel="noopener noreferrer"
+   aria-label="Escribirle por WhatsApp a Rodrigo Figueroa">
+  <svg class="wa-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+  </svg>
+  <span class="wa-texto">Escríbale a Rodrigo</span>
+</a>
+
+<script src="assets/reserva.js" defer></script>
+</body>
+</html>
