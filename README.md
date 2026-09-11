@@ -1,18 +1,17 @@
-# IA Local Segura en Apple — landing
+# IA Local Segura en Apple — landing del ebook
 
-Landing de **IA Local Segura en Apple**, publicada en GitHub Pages.
+Landing de venta del ebook **IA Local Segura en Apple**, publicada en GitHub Pages.
 
 - **URL:** https://keepsync-hub.github.io/apple-ia-local-segura/
-- **Producto principal:** un **Mac mini de USD 2.500** que llega encendido y listo, con un agente
-  adentro que recuerda, aprende la forma de trabajar del equipo y da seguimiento. Todo —incluida
-  la memoria del agente— vive en el disco cifrado de ese equipo, sin salir a internet y apoyándose
-  en los controles que ya pide ISO/IEC 27001.
-- **Producto secundario:** el **ebook**, para quien prefiere montárselo solo. **USD 25** las
-  primeras 20 reservas; después, **USD 50**.
-- **Plan gestionado, opcional:** USD 90 al mes para empresas, con la cobertura AppleCare del equipo.
-- **Dos embudos distintos:** el equipo se pide **por WhatsApp** (venta conversada, sin formulario);
-  el ebook se reserva por el **formulario**, que es el único que toca n8n.
-- **La landing reserva, no cobra.** El link de pago del ebook se manda por correo, con 48 h de plazo.
+- **Lo que se vende acá es el ebook**, y nada más: enseña a dejar andando, dentro de un Mac mini,
+  un agente que recuerda, aprende la forma de trabajar del equipo y da seguimiento —con el modelo
+  y la memoria en el disco cifrado del equipo, sin salir a internet y apoyándose en los controles
+  que ya pide ISO/IEC 27001.
+- **Oferta:** las primeras **20 reservas** pagan **USD 25**; después el ebook queda en **USD 50**.
+- **La landing reserva, no cobra.** El link de pago se manda por correo, con 48 h de plazo.
+- **El Mac mini preconfigurado no se vende en la página: se cotiza.** Tiene su propia sección
+  (`#equipo`) con el precio de referencia —USD 2.500, con el equipo incluido— y un botón de
+  WhatsApp. Esa venta es conversada y **no toca n8n**.
 
 Comparte la máquina con la landing de [IA Segura ISO 27001](https://github.com/keepsync-hub/ebook-ia-segura-iso27001):
 mismo flujo de reserva y mismo despliegue. Cambian el contenido, la paleta y las rutas del webhook.
@@ -26,24 +25,19 @@ aprendido no sale del equipo. **No se nombra ningún proveedor de modelo ni proy
 ni en la página ni acá. Si alguna vez hay que cambiar la pieza de software que hay debajo, la
 página no se toca.
 
-## La cuenta que hace la página
+## Los precios que aparecen
 
-Premisa declarada en la propia página: **USD 800 al mes** como piso de lo que cuesta la carga
-administrativa que hoy alguien igual está haciendo.
-
-| | Ese trabajo | Este equipo |
+| Precio | Qué es | Cómo se cobra |
 |---|---|---|
-| Mes 4 | USD 3.200 | USD 2.500 → ya se pagó |
-| Año 1 | USD 9.600 | USD 2.500 |
-| Año 3 | USD 28.800 | USD 2.500 |
+| USD 25 / USD 50 | El ebook (lanzamiento / normal) | Formulario → n8n → link de pago por correo |
+| USD 2.500 | El Mac mini preconfigurado, con el equipo incluido | WhatsApp, fuera de la página |
+| USD 90 al mes | Plan gestionado opcional, con cobertura AppleCare | WhatsApp |
 
-2.500 ÷ 800 = 3,1 meses, así que la frase de la página es «al cuarto mes ya está a favor», que es
-exacta. **Si cambia el precio del equipo o el piso de USD 800, hay que rehacer esta tabla**: está
-en la sección `#oferta` de `docs/index.html`, dentro de `.cuenta`.
-
-La comparación es contra **el costo del trabajo repetitivo**, no contra despedir a nadie — la
-página sostiene en dos lugares que el agente devuelve horas y no reemplaza gente. Conviene no
-romper esa coherencia al editar.
+La sección `#equipo` justifica los USD 2.500 en una línea: contra un piso declarado de **USD 800
+al mes** que cuesta esa carga administrativa, el equipo se paga **al cuarto mes** (2.500 ÷ 800 =
+3,1 meses, así que la frase es exacta). **Si cambia alguno de esos dos números hay que rehacer esa
+línea.** La comparación es contra el costo del trabajo repetitivo, no contra despedir a nadie: la
+página sostiene que el agente devuelve horas, y conviene no romper esa coherencia al editar.
 
 ## Cómo está armado
 
@@ -151,9 +145,9 @@ con qué intención llega cada persona:
 
 | Mensaje | Dónde está |
 |---|---|
-| «tengo una consulta» | Burbuja fija, pie de página y el `noscript` del formulario |
-| «quiero el Mac mini configurado con el agente (USD 2.500)» | Botón del hero, tarjeta de la oferta, cierre y dos preguntas del FAQ |
-| «quiero saber del plan gestionado» | Nota del plan, dentro de la cuenta |
+| «tengo una consulta» | Burbuja fija, pie de página, cierre y el `noscript` de los formularios |
+| «quiero el Mac mini configurado con el agente (USD 2.500)» | Botón de la sección `#equipo` y la última pregunta del FAQ |
+| «quiero saber del plan gestionado» | Enlace del plan, dentro de la sección `#equipo` |
 
 Los tres se generan con `urllib.parse.quote` para no equivocarse con los acentos.
 

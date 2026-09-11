@@ -218,19 +218,14 @@ img { display: block; max-width: 100%; height: auto; }
 .btn-wa:hover { background: var(--wa); filter: brightness(1.05); }
 .btn-wa svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
 
-/* Los botones del hero y del cierre son enlaces, no botones de formulario:
-   dejan de ocupar el ancho completo y se alinean en fila. */
-.hero-acciones { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 22px; margin-bottom: 4px; }
-.hero-acciones .btn-primary,
-.close-cta {
+/* Algunos botones son enlaces y no botones de formulario: dejan de ocupar el
+   ancho completo y alinean su icono. */
+.franja-cta, .oferta-libro-cta {
   width: auto;
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   text-decoration: none;
 }
-.hero-acciones .btn-primary:hover, .close-cta:hover { text-decoration: none; }
-
-.btn-ghost { font-size: 16px; font-weight: 500; color: var(--link); }
-.btn-ghost span { display: inline-block; margin-left: 2px; }
+.franja-cta:hover, .oferta-libro-cta:hover { text-decoration: none; }
 
 .microcopy { font-size: 13px; color: var(--muted-dim); margin: 14px 0 0; }
 
@@ -287,6 +282,7 @@ img { display: block; max-width: 100%; height: auto; }
   transform: rotateY(24deg); transform-origin: left center;
 }
 .cover-note { margin: 26px 0 0; font-size: 14px; color: var(--muted); }
+.cover-note-extra { margin: 18px 0 0; }
 .cover-note b { display: block; color: var(--text); font-size: 15px; margin-bottom: 2px; }
 
 
@@ -441,6 +437,7 @@ img { display: block; max-width: 100%; height: auto; }
 .close { max-width: 680px; margin-inline: auto; text-align: center; }
 .close .h2 { max-width: none; }
 .close-lead { color: var(--muted); font-size: 19px; margin-bottom: 30px; max-width: 56ch; margin-inline: auto; }
+.close .reserva { text-align: left; }
 .close-nota { margin-top: 22px; }
 
 /* ── footer ── */
@@ -470,27 +467,23 @@ img { display: block; max-width: 100%; height: auto; }
 .mapa span { color: var(--muted); font-size: 15px; }
 
 
-/* ───────────────────────  la oferta  ───────────────────────
-   El equipo ocupa la tarjeta grande, con la cuenta pegada al precio; el ebook
-   queda en una franja abajo, que es el peso que le corresponde. */
+/* ───────────────────────  el equipo preconfigurado  ───────────────────────
+   La alternativa para quien no quiere armarlo. No se vende en la página —se
+   cotiza por WhatsApp—, así que es una sola tarjeta y no compite con el libro. */
 
-.oferta {
-  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+.franja {
+  display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   background: var(--surface); border: 1px solid var(--line);
-  border-radius: var(--r); overflow: hidden; margin-bottom: 22px;
+  border-radius: var(--r); overflow: hidden;
 }
-.oferta-detalle { padding: 36px; }
+.franja-texto { padding: 36px; }
+.franja-precio { background: var(--bg-alt); padding: 36px; border-left: 1px solid var(--line); }
 
 .oferta-tag { font-size: 14px; font-weight: 600; color: var(--muted-dim); margin: 0 0 8px; }
-.oferta h3 { font-size: 26px; margin-bottom: 18px; }
-
-.oferta-precio { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
-.oferta-precio b { font-size: clamp(38px, 4.4vw, 46px); font-weight: 700; letter-spacing: -0.03em; }
-.oferta-precio span { font-size: 15px; color: var(--muted); }
-
+.franja-texto .h2 { font-size: clamp(24px, 2.8vw, 32px); margin-bottom: 16px; }
 .oferta-lead { color: var(--muted); margin-bottom: 22px; }
 
-.incluye { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 10px; }
+.incluye { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .incluye li { position: relative; padding-left: 28px; color: var(--muted); font-size: 15px; }
 .incluye li::before {
   content: ""; position: absolute; left: 3px; top: .34em;
@@ -499,42 +492,12 @@ img { display: block; max-width: 100%; height: auto; }
   transform: rotate(-45deg);
 }
 
+.oferta-precio { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.oferta-precio b { font-size: clamp(32px, 3.6vw, 38px); font-weight: 700; letter-spacing: -0.03em; }
+.oferta-precio span { font-size: 14px; color: var(--muted); }
+
+.franja-cuenta { font-size: 14.5px; color: var(--muted); margin-bottom: 22px; }
 .oferta-nota { font-size: 13px; color: var(--muted-dim); margin: 14px 0 0; }
-
-/* ── la cuenta ── */
-
-.cuenta { background: var(--bg-alt); padding: 36px; border-left: 1px solid var(--line); }
-.cuenta h4 { font-size: 19px; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.02em; }
-.cuenta-premisa { font-size: 15px; color: var(--muted); margin-bottom: 18px; }
-
-.cuenta table { width: 100%; border-collapse: collapse; font-size: 15px; margin-bottom: 18px; }
-.cuenta thead th {
-  text-align: right; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-  color: var(--muted-dim); padding: 0 0 8px;
-}
-.cuenta tbody th { text-align: left; font-weight: 600; padding: 11px 0; white-space: nowrap; }
-.cuenta tbody td { text-align: right; color: var(--muted); padding: 11px 0 11px 12px; }
-.cuenta tbody tr + tr th, .cuenta tbody tr + tr td { border-top: 1px solid var(--line); }
-.cuenta-hit { color: var(--good) !important; font-weight: 600; }
-
-.cuenta-nota { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
-.cuenta-plan {
-  font-size: 14px; color: var(--muted); margin: 18px 0 0;
-  padding-top: 16px; border-top: 1px solid var(--line);
-}
-
-/* ── la franja del ebook ── */
-
-.oferta-libro {
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;
-  background: var(--surface); border: 1px solid var(--line);
-  border-radius: var(--r); padding: 28px 36px;
-}
-.oferta-libro-texto { max-width: 62ch; }
-.oferta-libro h3 { font-size: 21px; margin-bottom: 10px; }
-.oferta-libro p { color: var(--muted); font-size: 15px; margin: 0; }
-.oferta-libro-cta { width: auto; flex: none; text-decoration: none; }
-.oferta-libro-cta:hover { text-decoration: none; }
 
 
 /* ───────────────────────  burbuja de WhatsApp  ───────────────────────
@@ -564,8 +527,8 @@ img { display: block; max-width: 100%; height: auto; }
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-visual { position: static; }
   .contrast, .steps, .pilares { grid-template-columns: 1fr; }
-  .oferta { grid-template-columns: 1fr; }
-  .cuenta { border-left: 0; border-top: 1px solid var(--line); }
+  .franja { grid-template-columns: 1fr; }
+  .franja-precio { border-left: 0; border-top: 1px solid var(--line); }
   /* El libro cambia de orden: primero la portada y el precio, después el índice. */
   .libro-grid { grid-template-columns: 1fr; gap: 34px; }
   .libro-lado { order: -1; }
@@ -589,7 +552,7 @@ img { display: block; max-width: 100%; height: auto; }
   .band { padding-block: 56px; }
   .field-row { grid-template-columns: 1fr; }
   .reserva, .pilar, .card { padding: 22px; }
-  .oferta-detalle, .cuenta, .oferta-libro { padding: 24px; }
+  .franja-texto, .franja-precio { padding: 24px; }
   .offer { gap: 14px; padding: 18px; }
   .toc li { grid-template-columns: 1fr; }
   .route { grid-row: auto; justify-self: start; margin-bottom: 6px; }
