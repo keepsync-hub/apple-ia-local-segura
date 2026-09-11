@@ -125,7 +125,7 @@ img { display: block; max-width: 100%; height: auto; }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   gap: 56px;
   align-items: start;
 }
@@ -137,7 +137,7 @@ img { display: block; max-width: 100%; height: auto; }
 }
 
 .hero h1 {
-  font-size: clamp(36px, 4.6vw, 56px);
+  font-size: clamp(34px, 4vw, 48px);
   letter-spacing: -0.025em;
   line-height: 1.05;
   margin-bottom: 22px;
@@ -214,6 +214,24 @@ img { display: block; max-width: 100%; height: auto; }
 .btn-primary:hover { background: var(--accent-h); }
 .btn-primary[disabled] { opacity: .5; cursor: progress; }
 
+.btn-wa { background: var(--wa); color: #04220f; }
+.btn-wa:hover { background: var(--wa); filter: brightness(1.05); }
+.btn-wa svg { width: 20px; height: 20px; fill: currentColor; flex: none; }
+
+/* Los botones del hero y del cierre son enlaces, no botones de formulario:
+   dejan de ocupar el ancho completo y se alinean en fila. */
+.hero-acciones { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 22px; margin-bottom: 4px; }
+.hero-acciones .btn-primary,
+.close-cta {
+  width: auto;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  text-decoration: none;
+}
+.hero-acciones .btn-primary:hover, .close-cta:hover { text-decoration: none; }
+
+.btn-ghost { font-size: 16px; font-weight: 500; color: var(--link); }
+.btn-ghost span { display: inline-block; margin-left: 2px; }
+
 .microcopy { font-size: 13px; color: var(--muted-dim); margin: 14px 0 0; }
 
 .form-status { margin: 14px 0 0; font-size: 15px; font-weight: 500; display: none; }
@@ -251,8 +269,9 @@ img { display: block; max-width: 100%; height: auto; }
 
 /* ── la portada del ebook, junto al índice ── */
 
-.libro-grid { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 48px; align-items: start; }
-.libro-portada { position: sticky; top: 82px; text-align: center; }
+.libro-grid { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; }
+.libro-lado { display: grid; gap: 22px; }
+.libro-portada { text-align: center; }
 
 .book {
   position: relative; display: inline-block;
@@ -337,6 +356,21 @@ img { display: block; max-width: 100%; height: auto; }
 .steps h3 { font-size: 19px; margin-bottom: 10px; }
 .steps p { color: var(--muted); font-size: 15px; margin: 0; }
 
+/* ── los tres pilares del agente ── */
+
+.pilares { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.pilar {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r); padding: 30px;
+}
+.pilar h3 { font-size: 21px; margin-bottom: 12px; }
+.pilar p { color: var(--muted); font-size: 15.5px; }
+.pilar-ej {
+  margin: 18px 0 0; padding-top: 16px;
+  border-top: 1px solid var(--line-soft);
+  font-size: 14.5px;
+}
+
 /* ── tabla ── */
 
 .table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); }
@@ -406,34 +440,14 @@ img { display: block; max-width: 100%; height: auto; }
 .band-close { background: var(--bg-alt); }
 .close { max-width: 680px; margin-inline: auto; text-align: center; }
 .close .h2 { max-width: none; }
-.close-lead { color: var(--muted); font-size: 19px; margin-bottom: 32px; }
-.close .reserva { text-align: left; }
+.close-lead { color: var(--muted); font-size: 19px; margin-bottom: 30px; max-width: 56ch; margin-inline: auto; }
+.close-nota { margin-top: 22px; }
 
 /* ── footer ── */
 
 .footer { background: var(--bg-alt); padding-block: 38px 48px; border-top: 1px solid var(--line); }
 .footer-in { display: grid; gap: 12px; }
 .footer-note { color: var(--muted-dim); font-size: 13px; max-width: 76ch; margin: 0; }
-
-
-/* ───────────────────────  sobre el libro  ───────────────────────
-   Va después de las preguntas y antes del cierre: cuando ya se resolvieron las
-   dudas del producto, lo que queda es decir para quién está escrito. */
-
-.autor { display: grid; }
-.autor-texto { max-width: 62ch; }
-.autor-texto .h2 { margin-bottom: 16px; }
-.autor-texto p { color: var(--muted); }
-
-.autor-wa {
-  display: inline-flex; align-items: center; gap: 9px;
-  margin-top: 8px; padding: 12px 20px;
-  border-radius: var(--pill);
-  background: var(--wa); color: #04220f;
-  font-weight: 600; font-size: 15px;
-}
-.autor-wa:hover { filter: brightness(1.05); text-decoration: none; }
-.autor-wa svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
 
 
 /* ───────────────────────  mapa de controles ISO  ───────────────────────
@@ -456,48 +470,71 @@ img { display: block; max-width: 100%; height: auto; }
 .mapa span { color: var(--muted); font-size: 15px; }
 
 
-/* ───────────────────────  los dos caminos  ───────────────────────
-   Armarlo con el libro o recibirlo configurado. Misma jerarquía visual que
-   las tarjetas del contraste, pero cada una termina en su propia acción. */
+/* ───────────────────────  la oferta  ───────────────────────
+   El equipo ocupa la tarjeta grande, con la cuenta pegada al precio; el ebook
+   queda en una franja abajo, que es el peso que le corresponde. */
 
-.vias { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: stretch; }
-
-.via {
-  display: flex; flex-direction: column;
+.oferta {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   background: var(--surface); border: 1px solid var(--line);
-  border-radius: var(--r); padding: 32px;
+  border-radius: var(--r); overflow: hidden; margin-bottom: 22px;
 }
-.via-destacada { border-color: rgba(37,211,102,.5); box-shadow: var(--shadow); }
+.oferta-detalle { padding: 36px; }
 
-.via-tag { font-size: 14px; font-weight: 600; color: var(--muted-dim); margin: 0 0 10px; }
-.via-destacada .via-tag { color: #128c3e; }
+.oferta-tag { font-size: 14px; font-weight: 600; color: var(--muted-dim); margin: 0 0 8px; }
+.oferta h3 { font-size: 26px; margin-bottom: 18px; }
 
-.via h3 { font-size: 24px; margin-bottom: 12px; }
-.via-lead { color: var(--muted); margin-bottom: 20px; }
+.oferta-precio { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.oferta-precio b { font-size: clamp(38px, 4.4vw, 46px); font-weight: 700; letter-spacing: -0.03em; }
+.oferta-precio span { font-size: 15px; color: var(--muted); }
 
-.via-lista { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 10px; }
-.via-lista li { position: relative; padding-left: 28px; color: var(--muted); font-size: 15px; }
-.via-lista li::before {
+.oferta-lead { color: var(--muted); margin-bottom: 22px; }
+
+.incluye { list-style: none; margin: 0 0 28px; padding: 0; display: grid; gap: 10px; }
+.incluye li { position: relative; padding-left: 28px; color: var(--muted); font-size: 15px; }
+.incluye li::before {
   content: ""; position: absolute; left: 3px; top: .34em;
   width: 12px; height: 6px;
   border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
   transform: rotate(-45deg);
 }
-.via-destacada .via-lista li::before { border-color: #128c3e; }
 
-/* El bloque de acción queda pegado al fondo para que las dos tarjetas
-   alineen sus botones aunque una liste una viñeta más que la otra. */
-.via-cta {
-  margin-top: auto;
-  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
-  text-align: center;
+.oferta-nota { font-size: 13px; color: var(--muted-dim); margin: 14px 0 0; }
+
+/* ── la cuenta ── */
+
+.cuenta { background: var(--bg-alt); padding: 36px; border-left: 1px solid var(--line); }
+.cuenta h4 { font-size: 19px; font-weight: 700; margin: 0 0 12px; letter-spacing: -0.02em; }
+.cuenta-premisa { font-size: 15px; color: var(--muted); margin-bottom: 18px; }
+
+.cuenta table { width: 100%; border-collapse: collapse; font-size: 15px; margin-bottom: 18px; }
+.cuenta thead th {
+  text-align: right; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+  color: var(--muted-dim); padding: 0 0 8px;
 }
-.via-cta:hover { text-decoration: none; }
-.via-cta-wa { background: var(--wa); color: #04220f; }
-.via-cta-wa:hover { background: var(--wa); filter: brightness(1.05); }
-.via-cta-wa svg { width: 19px; height: 19px; fill: currentColor; flex: none; }
+.cuenta tbody th { text-align: left; font-weight: 600; padding: 11px 0; white-space: nowrap; }
+.cuenta tbody td { text-align: right; color: var(--muted); padding: 11px 0 11px 12px; }
+.cuenta tbody tr + tr th, .cuenta tbody tr + tr td { border-top: 1px solid var(--line); }
+.cuenta-hit { color: var(--good) !important; font-weight: 600; }
 
-.via-nota { font-size: 13px; color: var(--muted-dim); margin: 14px 0 0; }
+.cuenta-nota { font-size: 14px; color: var(--muted); margin-bottom: 12px; }
+.cuenta-plan {
+  font-size: 14px; color: var(--muted); margin: 18px 0 0;
+  padding-top: 16px; border-top: 1px solid var(--line);
+}
+
+/* ── la franja del ebook ── */
+
+.oferta-libro {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r); padding: 28px 36px;
+}
+.oferta-libro-texto { max-width: 62ch; }
+.oferta-libro h3 { font-size: 21px; margin-bottom: 10px; }
+.oferta-libro p { color: var(--muted); font-size: 15px; margin: 0; }
+.oferta-libro-cta { width: auto; flex: none; text-decoration: none; }
+.oferta-libro-cta:hover { text-decoration: none; }
 
 
 /* ───────────────────────  burbuja de WhatsApp  ───────────────────────
@@ -526,9 +563,12 @@ img { display: block; max-width: 100%; height: auto; }
      equipo cierra el bloque, en vez de empujar todo bajo el pliegue. */
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-visual { position: static; }
-  .contrast, .steps, .vias { grid-template-columns: 1fr; }
+  .contrast, .steps, .pilares { grid-template-columns: 1fr; }
+  .oferta { grid-template-columns: 1fr; }
+  .cuenta { border-left: 0; border-top: 1px solid var(--line); }
+  /* El libro cambia de orden: primero la portada y el precio, después el índice. */
   .libro-grid { grid-template-columns: 1fr; gap: 34px; }
-  .libro-portada { position: static; }
+  .libro-lado { order: -1; }
   .band { padding-block: 68px; }
 }
 
@@ -548,7 +588,8 @@ img { display: block; max-width: 100%; height: auto; }
   .hero { padding-block: 44px 58px; }
   .band { padding-block: 56px; }
   .field-row { grid-template-columns: 1fr; }
-  .reserva, .via, .card { padding: 22px; }
+  .reserva, .pilar, .card { padding: 22px; }
+  .oferta-detalle, .cuenta, .oferta-libro { padding: 24px; }
   .offer { gap: 14px; padding: 18px; }
   .toc li { grid-template-columns: 1fr; }
   .route { grid-row: auto; justify-self: start; margin-bottom: 6px; }

@@ -19,8 +19,8 @@ const ESQUEMA = [
 ];
 
 const CODIGO_DECIDIR = 'const TOTAL = 20;\n'
-  + 'const PRECIO = 10;\n'
-  + 'const PRECIO_NORMAL = 25;\n'
+  + 'const PRECIO = 25;\n'
+  + 'const PRECIO_NORMAL = 50;\n'
   + 'const HORAS = 48;\n'
   + '\n'
   + '// Link de pago del precio de lanzamiento.\n'
@@ -149,8 +149,8 @@ const CODIGO_CUPOS = 'const TOTAL = 20;\n'
   + '    total: TOTAL,\n'
   + '    tomados: tomados,\n'
   + '    restantes: Math.max(0, TOTAL - tomados),\n'
-  + '    precio: 10,\n'
-  + '    precio_normal: 25\n'
+  + '    precio: 25,\n'
+  + '    precio_normal: 50\n'
   + '  }\n'
   + '}];';
 
@@ -207,10 +207,10 @@ const decidirCupo = node({
     empresa: 'Empresa',
     cargo: 'Gerenta de TI',
     estado: 'reservado',
-    precio_usd: 10,
+    precio_usd: 25,
     pagado: false,
     origen: 'hero',
-    asunto: 'Cupo #1 reservado — complete el pago de USD 10',
+    asunto: 'Cupo #1 reservado — complete el pago de USD 25',
     html: '<div>…</div>',
     respuesta: { ok: true, estado: 'reservado', cupo: 1, restantes: 19 }
   }]
@@ -331,7 +331,7 @@ const contarCupos = node({
     name: 'Contar cupos',
     parameters: { mode: 'runOnceForAllItems', language: 'javaScript', jsCode: CODIGO_CUPOS }
   },
-  output: [{ total: 20, tomados: 1, restantes: 19, precio: 10, precio_normal: 25 }]
+  output: [{ total: 20, tomados: 1, restantes: 19, precio: 25, precio_normal: 50 }]
 });
 
 const responderCupos = node({
