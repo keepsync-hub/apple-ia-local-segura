@@ -464,3 +464,89 @@ b, strong { color: #fff; font-weight: 650; }
      marca se queda solo con el texto y el chip cede el espacio. */
   .brand-mark { display: none; }
 }
+
+
+/* ───────────────────────  mapa de controles ISO  ───────────────────────
+   Va bajo la tabla de la plataforma: la tabla explica qué trae el equipo,
+   esta lista traduce eso al lenguaje del Anexo A. */
+
+.sub-h3 {
+  font-size: clamp(19px, 2.2vw, 23px);
+  font-weight: 700;
+  margin: 46px 0 14px;
+}
+
+.mapa { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; max-width: 900px; }
+
+.mapa li {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 14px;
+  align-items: start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  padding: 14px 16px;
+}
+.mapa b {
+  font-size: 13px; font-weight: 700; letter-spacing: .06em;
+  color: var(--accent); background: rgba(34, 211, 238, .12);
+  border-radius: 999px; padding: 4px 0; text-align: center;
+}
+.mapa span { color: var(--muted); font-size: 15px; }
+
+
+/* ───────────────────────  los dos caminos  ───────────────────────
+   Armarlo con el libro o recibirlo configurado. Misma jerarquía visual que
+   las tarjetas del contraste, pero cada una termina en su propia acción. */
+
+.vias { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+
+.via {
+  display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r); padding: 28px;
+}
+.via-destacada {
+  border-color: rgba(37, 211, 102, .38);
+  background: linear-gradient(180deg, rgba(37, 211, 102, .06), transparent 58%), var(--surface);
+}
+
+.via-tag {
+  font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--muted-dim); margin: 0 0 10px;
+}
+.via-destacada .via-tag { color: #4ade80; }
+
+.via h3 { font-size: 21px; margin-bottom: 12px; }
+.via-lead { color: var(--muted); margin-bottom: 18px; }
+
+.via-lista { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 9px; }
+.via-lista li { position: relative; padding-left: 26px; color: var(--muted); font-size: 15px; }
+.via-lista li::before {
+  content: ""; position: absolute; left: 4px; top: .5em;
+  width: 8px; height: 8px; border-radius: 2px; background: var(--accent);
+}
+.via-destacada .via-lista li::before { background: #4ade80; }
+
+/* El bloque de acción queda pegado al fondo para que las dos tarjetas
+   alineen sus botones aunque una liste una viñeta más que la otra. */
+.via-cta {
+  margin-top: auto;
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  text-decoration: none; text-align: center;
+}
+.via-cta-wa { background: #25d366; color: #04220f; }
+.via-cta-wa svg { width: 19px; height: 19px; fill: currentColor; flex: none; }
+
+.via-nota { font-size: 13px; color: var(--muted-dim); margin: 12px 0 0; }
+
+@media (max-width: 940px) {
+  .vias { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 420px) {
+  .via { padding: 22px; }
+  .mapa li { grid-template-columns: 1fr; gap: 8px; }
+  .mapa b { justify-self: start; padding: 4px 12px; }
+}

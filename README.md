@@ -3,6 +3,11 @@
 Landing de lanzamiento del ebook **IA Local Segura en Apple**, publicada en GitHub Pages.
 
 - **URL:** https://keepsync-hub.github.io/apple-ia-local-segura/
+- **De qué trata:** cómo instalar IA local en un **Mac mini** —el modelo corre dentro del equipo,
+  sin salir a internet y sin que un dato deje la empresa—, apoyándose en los controles que ya pide
+  ISO/IEC 27001.
+- **Dos caminos, una sola página:** montarlo desde cero con el ebook, o pedir un Mac mini
+  **100 % configurado** (llegar y usar). El segundo camino se cotiza por WhatsApp, no por el formulario.
 - **Oferta:** las primeras **20 reservas** pagan **USD 10**; después el ebook queda en **USD 25**.
 - **La landing reserva, no cobra.** El link de pago se manda por correo, con 48 h de plazo.
 
@@ -21,7 +26,7 @@ docs/
   index.html          la página completa (la portada del ebook es un SVG inline)
   assets/styles.css   estilos
   assets/reserva.js   contador de cupos + envío del formulario
-  assets/og.png       imagen para compartir en redes (1200×630)
+  assets/og.png       imagen para compartir en redes (1200×630, generada como captura de un HTML)
   .nojekyll           por si alguna vez se vuelve a servir desde una rama
 .github/workflows/
   pages.yml           empaqueta docs/ y lo publica en Pages
@@ -80,6 +85,12 @@ La página lleva una burbuja fija de WhatsApp al número de contacto
 (`+56 9 9412 0579`, enlace `wa.me` con mensaje prellenado). Es también el
 respaldo cuando el formulario falla, cuando el visitante tiene JavaScript
 desactivado, y la vía para pedir que se borren los datos.
+
+Hay **dos mensajes prellenados distintos** sobre el mismo número: el genérico
+("tengo una consulta") en la burbuja, el pie y el bloque de contacto; y uno de
+cotización ("quiero cotizar un Mac mini ya configurado con IA local") en la
+tarjeta llave en mano de la sección **Dos caminos** y en su pregunta del FAQ.
+Así se distingue en la bandeja quién viene a preguntar y quién a comprar el equipo.
 
 ### Si n8n no responde
 
