@@ -8,7 +8,9 @@ Landing de venta del ebook **IA Local Segura en Apple**, publicada en GitHub Pag
   y la memoria en el disco cifrado del equipo, sin salir a internet y apoyándose en los controles
   que ya pide ISO/IEC 27001.
 - **Oferta:** las primeras **20 reservas** pagan **USD 25**; después el ebook queda en **USD 50**.
-- **La landing reserva, no cobra.** El link de pago se manda por correo, con 48 h de plazo.
+- **La reserva y el pago van seguidos.** Al enviar el formulario se guarda el registro y la
+  misma página manda a pagar a Webpay, sin salir del sitio. El correo con el mismo link queda
+  de respaldo para quien prefiera pagar después, con 48 h de plazo.
 - **El Mac mini preconfigurado no se vende en la página: se cotiza.** Tiene su propia sección
   (`#equipo`) con el precio de referencia —USD 2.500, con el equipo incluido— y un botón de
   WhatsApp. Esa venta es conversada y **no toca n8n**.
@@ -110,7 +112,7 @@ Un solo workflow de n8n, **Ebook IA Local Segura en Apple · Reservas (GitHub Pa
 | Ruta | Método | Devuelve |
 |---|---|---|
 | `/webhook/ebook-apple-ia/cupos` | GET | `{ total, tomados, restantes, precio, precio_normal }` |
-| `/webhook/ebook-apple-ia/reserva` | POST | `{ ok, estado, cupo, restantes }` |
+| `/webhook/ebook-apple-ia/reserva` | POST | `{ ok, estado, cupo, restantes, link_pago }` |
 
 Las reservas se guardan en la Data Table `reservas_ebook_apple_ia`, que es la fuente de verdad.
 
@@ -118,13 +120,27 @@ Las reservas se guardan en la Data Table `reservas_ebook_apple_ia`, que es la fu
 
 | Estado | Cuándo | Qué recibe la persona |
 |---|---|---|
-| `reservado` | Quedan cupos | Cupo numerado y el link de pago, con 48 h |
-| `ya_reservado` | El correo ya estaba | Su cupo original y el link de pago de nuevo |
-| `lista_espera` | Los 20 están tomados | Aviso de que le escribimos al salir a USD 50 |
+| `reservado` | Quedan cupos | Cupo numerado, salto al pago en la página y el link por correo |
+| `ya_reservado` | El correo ya estaba | Su cupo original y el mismo salto al pago |
+| `lista_espera` | Los 20 están tomados | Aviso de que le escribimos al salir a USD 50. **Sin salto al pago**: todavía no hay nada que cobrar, y por eso `link_pago` viene en `null` |
 
 El guardado usa **upsert por correo**, así que el mismo correo dos veces actualiza su fila y
 nunca duplica. El nodo `Responder al navegador` va después de guardar y antes de Gmail: la
-persona recibe su confirmación rápido y un fallo de correo no le cuesta la reserva.
+persona recibe su confirmación rápido y un fallo de correo no le cuesta la reserva —y ahora
+tampoco le cuesta el pago, porque el link viaja en la respuesta del webhook, no solo en el correo.
+
+### El salto al pago
+
+Cuando la reserva queda confirmada, `reserva.js` inserta un botón **Pagar ahora** bajo el
+formulario y salta solo al link a los 4 segundos. Ese retraso es a propósito: da tiempo a leer
+que el cupo quedó tomado y no empuja a nadie sin aviso; si el salto automático falla o el
+navegador lo bloquea, el botón sigue ahí.
+
+El link sale de `data.link_pago`, que devuelve el webhook. `reserva.js` guarda además una copia
+en la constante `LINK_PAGO` como respaldo, y solo acepta la del servidor si viene por `https://`.
+**Si cambia el link de pago hay que cambiarlo en los dos lugares**: `LINK_PAGO` en
+`n8n/reserva-ebook.workflow.js` (que alimenta el correo y la respuesta) y `LINK_PAGO` en
+`docs/assets/reserva.js` (el respaldo).
 
 ### Anti-spam
 
@@ -160,14 +176,14 @@ reenviable y ofrece el WhatsApp del autor como respaldo.
 ## Estado
 
 La página está lista para publicar. El backend **todavía no está montado en n8n**: el archivo
-`n8n/reserva-ebook.workflow.js` es el código del workflow listo para importar, pero antes hay
-que dejar dos cosas resueltas, las dos marcadas como `PENDIENTE` en el archivo (y en una nota
-adhesiva dentro del propio workflow):
+`n8n/reserva-ebook.workflow.js` es el código del workflow listo para importar, y queda **una sola
+cosa pendiente**, marcada como `PENDIENTE` en el archivo (y en una nota adhesiva dentro del propio
+workflow):
 
 1. **Crear la Data Table** `reservas_ebook_apple_ia` con las columnas del `ESQUEMA` y pegar su ID
    en la constante `TABLA`.
-2. **Poner el link de pago** en `LINK_PAGO`, al inicio del nodo **Decidir cupo y correo**. Mientras
-   diga `PENDIENTE`, el correo de confirmación manda a la gente a una URL que no existe.
+
+El link de pago ya está puesto (`https://www.webpay.cl/form-pay/420828`).
 
 Ahí mismo viven los precios del ebook (`PRECIO = 25`, `PRECIO_NORMAL = 50`) y el plazo de 48 h.
 Ojo: **los precios están escritos dentro de strings de código** (`CODIGO_DECIDIR` y `CODIGO_CUPOS`),
