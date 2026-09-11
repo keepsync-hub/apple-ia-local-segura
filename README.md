@@ -1,7 +1,6 @@
 # IA Local Segura en Apple — landing de lanzamiento
 
-Landing de lanzamiento del ebook **IA Local Segura en Apple**, de Rodrigo Figueroa, publicada
-en GitHub Pages.
+Landing de lanzamiento del ebook **IA Local Segura en Apple**, publicada en GitHub Pages.
 
 - **URL:** https://keepsync-hub.github.io/apple-ia-local-segura/
 - **Oferta:** las primeras **20 reservas** pagan **USD 10**; después el ebook queda en **USD 25**.
@@ -77,8 +76,8 @@ desde `https://keepsync-hub.github.io`.
 
 ### Contacto directo
 
-La página lleva una burbuja fija de WhatsApp al número del autor
-(`+56 9 8250 4273`, enlace `wa.me` con mensaje prellenado). Es también el
+La página lleva una burbuja fija de WhatsApp al número de contacto
+(`+56 9 9412 0579`, enlace `wa.me` con mensaje prellenado). Es también el
 respaldo cuando el formulario falla, cuando el visitante tiene JavaScript
 desactivado, y la vía para pedir que se borren los datos.
 
