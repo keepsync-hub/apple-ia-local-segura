@@ -27,12 +27,42 @@ docs/
   assets/styles.css   estilos
   assets/reserva.js   contador de cupos + envío del formulario
   assets/og.png       imagen para compartir en redes (1200×630, generada como captura de un HTML)
+  assets/mac-mini-*.jpg  las tres fotos del equipo
   .nojekyll           por si alguna vez se vuelve a servir desde una rama
 .github/workflows/
   pages.yml           empaqueta docs/ y lo publica en Pages
 n8n/
   reserva-ebook.workflow.js   código SDK del workflow, fuente de verdad
 ```
+
+## El lenguaje visual
+
+La referencia es **apple.com**: fondo blanco alternado con gris `#f5f5f7`, texto `#1d1d1f`,
+azul `#0071e3` para la acción, naranjo `#bf4800` para el «Nuevo», botones en píldora,
+esquinas de 18 px y titulares grandes con tracking negativo.
+
+La tipografía es la pila del sistema (`-apple-system` → SF Pro en un Mac, Helvetica o Arial
+en el resto). Se eligió así por dos razones: en el público de esta página —gente frente a un
+Mac— se ve exactamente como en apple.com, y no obliga a pedirle una fuente a un dominio
+externo, que es justo lo que la página promete no hacer.
+
+### Las fotos y el color de las bandas
+
+Cada foto del Mac mini trae su propio fondo, y la banda que la contiene usa **ese mismo color**,
+así el equipo aparece recortado sobre la página, sin recuadro ni borde:
+
+| Foto | Fondo | Dónde va |
+|---|---|---|
+| `mac-mini-superior.jpg` | `#f5f5f7` | Hero, dentro del recuadro gris |
+| `mac-mini-frente.jpg` | `#fcf7f4` | Banda «Por qué un Mac mini» (`.band-foto`) |
+| `mac-mini-escritorio.jpg` | `#f8f7f3` | Banda del caso real (`.band-foto-2`) |
+
+Los tres colores están en las variables `--bg-alt`, `--bg-foto` y `--bg-foto-2`. **Si se
+reemplaza una foto hay que actualizar su variable**, o aparecerá el recuadro.
+
+Son imágenes de producto de Apple Inc., usadas para identificar el equipo; el pie de la página
+lo dice. Antes de una campaña pagada conviene revisar las condiciones de uso de material de
+Apple, o reemplazarlas por fotos propias del equipo que se entrega.
 
 ## Publicar
 

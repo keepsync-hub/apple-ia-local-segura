@@ -19,7 +19,7 @@
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b1017'/><rect x='9' y='9' width='14' height='14' rx='3.4' fill='%2322d3ee'/><rect x='13' y='13' width='6' height='6' rx='1.4' fill='%230b1017'/><g stroke='%2322d3ee' stroke-width='2' stroke-linecap='round'><path d='M13 6v3M19 6v3M13 23v3M19 23v3M6 13h3M6 19h3M23 13h3M23 19h3'/></g></svg>" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23f5f5f7'/><rect x='9' y='9' width='14' height='14' rx='3.4' fill='%230071e3'/><rect x='13' y='13' width='6' height='6' rx='1.4' fill='%23f5f5f7'/><g stroke='%230071e3' stroke-width='2' stroke-linecap='round'><path d='M13 6v3M19 6v3M13 23v3M19 23v3M6 13h3M6 19h3M23 13h3M23 19h3'/></g></svg>" />
 <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
@@ -123,60 +123,30 @@
       </form>
     </div>
 
-    <div class="hero-cover">
-      <div class="book">
-        <svg class="book-face" viewBox="0 0 420 560" role="img" aria-label="Portada del ebook IA Local Segura en Apple: la IA corre dentro de un Mac mini">
-          <defs>
-            <linearGradient id="g-cover" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#101b28" /><stop offset="0.55" stop-color="#0c1420" /><stop offset="1" stop-color="#140f22" />
-            </linearGradient>
-            <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#22d3ee" /><stop offset="1" stop-color="#a78bfa" />
-            </linearGradient>
-            <radialGradient id="g-glow" cx="0.72" cy="0.26" r="0.6">
-              <stop offset="0" stop-color="#22d3ee" stop-opacity="0.28" /><stop offset="1" stop-color="#22d3ee" stop-opacity="0" />
-            </radialGradient>
-          </defs>
+    <div class="hero-visual">
+      <figure class="foto-tile">
+        <img src="assets/mac-mini-superior.jpg" width="1260" height="933"
+             alt="Un Mac mini visto desde arriba, sobre una superficie gris clara." />
+        <figcaption>El equipo donde vive el modelo. Todo el trabajo ocurre aquí adentro.</figcaption>
+      </figure>
 
-          <rect width="420" height="560" fill="url(#g-cover)" />
-          <rect width="420" height="560" fill="url(#g-glow)" />
-          <rect x="0" y="0" width="9" height="560" fill="url(#g-accent)" opacity="0.85" />
-
-          <!-- retícula tenue: alude al perímetro del equipo -->
-          <g stroke="#294055" stroke-width="0.7" opacity="0.5">
-            <path d="M44 0v560M420 132H44M420 428H44" />
-          </g>
-
-          <text x="44" y="86" fill="#7f96ad" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" letter-spacing="3.4">EBOOK</text>
-
-          <!-- el chip: todo el trabajo ocurre acá adentro -->
-          <g transform="translate(290 176)">
-            <g stroke="url(#g-accent)" stroke-width="6" stroke-linecap="round">
-              <path d="M-16 -54v-14M2 -54v-14M20 -54v-14M-16 54v14M2 54v14M20 54v14" />
-              <path d="M-54 -16h-14M-54 2h-14M-54 20h-14M54 -16h14M54 2h14M54 20h14" />
-            </g>
-            <rect x="-54" y="-54" width="108" height="108" rx="24" fill="url(#g-accent)" />
-            <rect x="-24" y="-24" width="48" height="48" rx="12" fill="#0c1420" />
-          </g>
-
-          <text x="44" y="286" fill="#f1f6fb" font-family="ui-sans-serif,system-ui,sans-serif" font-size="66" font-weight="800" letter-spacing="-1.6">IA LOCAL</text>
-          <text x="44" y="352" fill="#f1f6fb" font-family="ui-sans-serif,system-ui,sans-serif" font-size="66" font-weight="800" letter-spacing="-1.6">SEGURA</text>
-          <text x="44" y="404" fill="#a78bfa" font-family="ui-sans-serif,system-ui,sans-serif" font-size="33" font-weight="700" letter-spacing="5">EN APPLE</text>
-
-          <text x="44" y="468" fill="#9fb3c8" font-family="ui-sans-serif,system-ui,sans-serif" font-size="17">El modelo corre dentro de un Mac mini:</text>
-          <text x="44" y="494" fill="#9fb3c8" font-family="ui-sans-serif,system-ui,sans-serif" font-size="17">sin internet y sin fuga de información.</text>
-          <text x="44" y="536" fill="#a78bfa" font-family="ui-sans-serif,system-ui,sans-serif" font-size="18" font-weight="700" letter-spacing="1.2">EDICIÓN DE LANZAMIENTO</text>
-        </svg>
-        <div class="book-edge" aria-hidden="true"></div>
-      </div>
-      <p class="cover-note">PDF y EPUB · dos rutas de lectura</p>
+      <!-- El segundo camino aparece acá arriba a propósito: quien no quiere armar
+           nada tiene que saberlo antes de decidir si el libro le sirve. -->
+      <aside class="hero-extra">
+        <h2>¿Prefiere no armar nada?</h2>
+        <p>
+          También entregamos el Mac mini <b>100&nbsp;% configurado y probado</b>: llega,
+          se enchufa y se usa.
+        </p>
+        <a href="#dos-caminos">Ver las dos formas de tenerlo <span aria-hidden="true">&rsaquo;</span></a>
+      </aside>
     </div>
 
   </div>
 </section>
 
 <!-- ─────────────────────────  2. EL CONTRASTE  ───────────────────────── -->
-<section class="band">
+<section class="band band-alt">
   <div class="wrap">
     <p class="kicker">El punto ciego</p>
     <h2 class="h2">Su gente ya usa IA. La pregunta es en qué servidor quedó lo que escribió.</h2>
@@ -212,7 +182,7 @@
 </section>
 
 <!-- ─────────────────────────  3. POR QUÉ UN MAC MINI  ───────────────────────── -->
-<section class="band band-alt">
+<section class="band band-foto">
   <div class="wrap">
     <p class="kicker">El equipo</p>
     <h2 class="h2">Un Mac mini es la forma más barata de tener IA puertas adentro.</h2>
@@ -223,6 +193,15 @@
       de un monitor, consume menos que una ampolleta y puede quedar encendido todo el día. Una sola
       compra, para toda el área: no hay suscripción por usuario ni servidor que arrendar.
     </p>
+    <figure class="foto-ancha">
+      <img src="assets/mac-mini-frente.jpg" width="1260" height="572" loading="lazy"
+           alt="Un Mac mini de frente: dos puertos USB-C, el indicador de encendido y la rejilla de ventilación." />
+      <figcaption>
+        Cabe en la palma de la mano y se conecta como cualquier equipo de la oficina.
+        Lo que lo vuelve distinto es lo que guarda adentro.
+      </figcaption>
+    </figure>
+
     <ol class="steps">
       <li>
         <span class="step-n">1</span>
@@ -382,7 +361,7 @@
 </section>
 
 <!-- ─────────────────────────  6. CASO ANÓNIMO  ───────────────────────── -->
-<section class="band band-case">
+<section class="band band-foto-2">
   <div class="wrap case">
     <p class="kicker">Caso real</p>
     <h2 class="h2">De horas de trabajo manual a decisiones basadas en datos</h2>
@@ -397,6 +376,15 @@
       desaparecieron del calendario de las personas. Lo que quedó fue agilidad, rapidez y certeza sobre la información —sin que un solo
       dato tuviera que salir de la compañía para lograrlo.
     </p>
+    <figure class="foto-ancha foto-caso">
+      <img src="assets/mac-mini-escritorio.jpg" width="1260" height="906" loading="lazy"
+           alt="Un Mac mini conectado sobre un escritorio, junto a un cuaderno de notas, un teclado y un iPhone." />
+      <figcaption>
+        El equipo queda conectado en el escritorio y el área entera trabaja contra él
+        desde su propio computador, por la red interna.
+      </figcaption>
+    </figure>
+
     <blockquote>
       <p>
         El criterio detrás del cambio: <b>aumentar las capacidades de cada persona</b>, delegar lo
@@ -409,7 +397,7 @@
 </section>
 
 <!-- ─────────────────────────  7. QUÉ HAY ADENTRO  ───────────────────────── -->
-<section class="band band-alt">
+<section class="band">
   <div class="wrap">
     <p class="kicker">Contenido</p>
     <h2 class="h2">Dos rutas de lectura en un mismo libro</h2>
@@ -417,6 +405,55 @@
       Cada capítulo está marcado. Un gerente puede leer solo su ruta y salir con criterio para decidir;
       el equipo de TI encuentra el detalle de implementación en la suya.
     </p>
+    <div class="libro-grid">
+      <div class="libro-portada">
+      <div class="book">
+        <svg class="book-face" viewBox="0 0 420 560" role="img" aria-label="Portada del ebook IA Local Segura en Apple: la IA corre dentro de un Mac mini">
+          <defs>
+            <linearGradient id="g-cover" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2c2c2f" /><stop offset="0.55" stop-color="#1d1d1f" /><stop offset="1" stop-color="#141416" />
+            </linearGradient>
+            <linearGradient id="g-accent" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#41a6ff" /><stop offset="1" stop-color="#0071e3" />
+            </linearGradient>
+            <radialGradient id="g-glow" cx="0.72" cy="0.26" r="0.6">
+              <stop offset="0" stop-color="#41a6ff" stop-opacity="0.3" /><stop offset="1" stop-color="#41a6ff" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+
+          <rect width="420" height="560" fill="url(#g-cover)" />
+          <rect width="420" height="560" fill="url(#g-glow)" />
+          <rect x="0" y="0" width="9" height="560" fill="url(#g-accent)" opacity="0.85" />
+
+          <!-- retícula tenue: alude al perímetro del equipo -->
+          <g stroke="#5a5a5e" stroke-width="0.7" opacity="0.5">
+            <path d="M44 0v560M420 132H44M420 428H44" />
+          </g>
+
+          <text x="44" y="86" fill="#86868b" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" letter-spacing="3.4">EBOOK</text>
+
+          <!-- el chip: todo el trabajo ocurre acá adentro -->
+          <g transform="translate(290 176)">
+            <g stroke="url(#g-accent)" stroke-width="6" stroke-linecap="round">
+              <path d="M-16 -54v-14M2 -54v-14M20 -54v-14M-16 54v14M2 54v14M20 54v14" />
+              <path d="M-54 -16h-14M-54 2h-14M-54 20h-14M54 -16h14M54 2h14M54 20h14" />
+            </g>
+            <rect x="-54" y="-54" width="108" height="108" rx="24" fill="url(#g-accent)" />
+            <rect x="-24" y="-24" width="48" height="48" rx="12" fill="#1d1d1f" />
+          </g>
+
+          <text x="44" y="286" fill="#f5f5f7" font-family="ui-sans-serif,system-ui,sans-serif" font-size="66" font-weight="800" letter-spacing="-1.6">IA LOCAL</text>
+          <text x="44" y="352" fill="#f5f5f7" font-family="ui-sans-serif,system-ui,sans-serif" font-size="66" font-weight="800" letter-spacing="-1.6">SEGURA</text>
+          <text x="44" y="404" fill="#41a6ff" font-family="ui-sans-serif,system-ui,sans-serif" font-size="33" font-weight="700" letter-spacing="5">EN APPLE</text>
+
+          <text x="44" y="468" fill="#a1a1a6" font-family="ui-sans-serif,system-ui,sans-serif" font-size="17">El modelo corre dentro de un Mac mini:</text>
+          <text x="44" y="494" fill="#a1a1a6" font-family="ui-sans-serif,system-ui,sans-serif" font-size="17">sin internet y sin fuga de información.</text>
+          <text x="44" y="536" fill="#41a6ff" font-family="ui-sans-serif,system-ui,sans-serif" font-size="18" font-weight="700" letter-spacing="1.2">EDICIÓN DE LANZAMIENTO</text>
+        </svg>
+        <div class="book-edge" aria-hidden="true"></div>
+      </div>
+        <p class="cover-note"><b>PDF y EPUB</b>Se lee en el Mac, en el iPad y en el Kindle.</p>
+      </div>
     <ol class="toc">
       <li><span class="route route-exec">Ejecutiva</span><b>El riesgo que ya está corriendo</b><span>Shadow AI: qué se está enviando hoy a chatbots públicos desde los equipos de la empresa y por qué nadie lo ve.</span></li>
       <li><span class="route route-exec">Ejecutiva</span><b>Por qué un Mac mini y no una suscripción</b><span>La cuenta contra el costo por usuario y contra un servidor arrendado, y cómo se presenta eso en un comité.</span></li>
@@ -428,11 +465,12 @@
       <li><span class="route route-tech">Técnica</span><b>El expediente para auditoría</b><span>Qué documentar y cómo, control por control, para responder ISO/IEC 27001 sin improvisar en la reunión.</span></li>
       <li><span class="route route-exec">Ejecutiva</span><b>Cómo medirlo y cómo contarlo</b><span>Indicadores, y cómo presentar el avance al directorio.</span></li>
     </ol>
+    </div>
   </div>
 </section>
 
 <!-- ─────────────────────────  8. FAQ + CIERRE  ───────────────────────── -->
-<section class="band">
+<section class="band band-alt">
   <div class="wrap">
     <p class="kicker">Preguntas frecuentes</p>
     <h2 class="h2">Lo que suelen preguntar antes de reservar</h2>
@@ -493,7 +531,7 @@
   </div>
 </section>
 
-<section class="band band-autor">
+<section class="band">
   <div class="wrap autor">
     <div class="autor-texto">
       <p class="kicker">Sobre el libro</p>
@@ -575,8 +613,10 @@
       WhatsApp</a> y se borran.
     </p>
     <p class="footer-note">
-      Apple, Mac, macOS y Apple Intelligence son marcas registradas de Apple Inc. Este ebook es un
-      trabajo independiente y no está afiliado a Apple Inc. ni patrocinado por ella.
+      Apple, Mac, Mac mini, macOS y Apple Intelligence son marcas registradas de Apple Inc. Las
+      fotografías del Mac mini son imágenes de producto de Apple Inc. y se muestran solo para
+      identificar el equipo. Este ebook es un trabajo independiente y no está afiliado a Apple Inc.
+      ni patrocinado por ella.
     </p>
   </div>
 </footer>
