@@ -24,7 +24,7 @@ const CODIGO_DECIDIR = 'const TOTAL = 20;\n'
   + 'const HORAS = 48;\n'
   + '\n'
   + '// Link de pago del precio de lanzamiento.\n'
-  + "const LINK_PAGO = 'PENDIENTE';\n"
+  + "const LINK_PAGO = 'https://www.webpay.cl/form-pay/420828';\n"
   + '\n'
   + "const req = $('Reserva entrante').first().json;\n"
   + 'const b = req.body || req;\n'
@@ -131,7 +131,11 @@ const CODIGO_DECIDIR = 'const TOTAL = 20;\n'
   + '    origen: origen,\n'
   + '    asunto: asunto,\n'
   + '    html: html,\n'
-  + '    respuesta: { ok: true, estado: estadoRespuesta, cupo: cupo, restantes: restantes }\n'
+  + '    respuesta: {\n'
+  + '      ok: true, estado: estadoRespuesta, cupo: cupo, restantes: restantes,\n'
+  + '      // La página manda a pagar en el acto; en lista de espera todavía no hay qué cobrar.\n'
+  + "      link_pago: estadoRespuesta === 'lista_espera' ? null : LINK_PAGO\n"
+  + '    }\n'
   + '  }\n'
   + '}];';
 
@@ -197,7 +201,7 @@ const decidirCupo = node({
   config: {
     name: 'Decidir cupo y correo',
     parameters: { mode: 'runOnceForAllItems', language: 'javaScript', jsCode: CODIGO_DECIDIR },
-    notes: 'Acá vive LINK_PAGO y toda la regla de negocio: reservado / ya_reservado / lista_espera.'
+    notes: 'Acá vive LINK_PAGO y toda la regla de negocio: reservado / ya_reservado / lista_espera. El link sale por dos vías: el correo y el campo link_pago de la respuesta.'
   },
   output: [{
     fecha: '2026-09-11T14:00:00.000-04:00',
@@ -212,7 +216,7 @@ const decidirCupo = node({
     origen: 'hero',
     asunto: 'Cupo #1 reservado — complete el pago de USD 25',
     html: '<div>…</div>',
-    respuesta: { ok: true, estado: 'reservado', cupo: 1, restantes: 19 }
+    respuesta: { ok: true, estado: 'reservado', cupo: 1, restantes: 19, link_pago: 'https://www.webpay.cl/form-pay/420828' }
   }]
 });
 
@@ -344,7 +348,7 @@ const responderCupos = node({
 });
 
 const notaPago = sticky(
-  '## Antes de activar\n\n1. Crear la Data Table `reservas_ebook_apple_ia` con las columnas del `ESQUEMA` y pegar su ID en `TABLA`.\n2. Editar `LINK_PAGO` en **Decidir cupo y correo**. Mientras diga `PENDIENTE`, el correo de confirmación manda a la gente a una URL que no existe.',
+  '## Antes de activar\n\n1. Crear la Data Table `reservas_ebook_apple_ia` con las columnas del `ESQUEMA` y pegar su ID en `TABLA`. Es lo único que queda pendiente.\n\nEl link de pago ya está puesto en `LINK_PAGO`, dentro de **Decidir cupo y correo**. Se usa en dos partes: el botón del correo y el campo `link_pago` de la respuesta, que es el que la página usa para mandar a pagar en el acto.',
   [decidirCupo],
   { color: 3 }
 );

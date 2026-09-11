@@ -229,6 +229,15 @@ img { display: block; max-width: 100%; height: auto; }
 
 .microcopy { font-size: 13px; color: var(--muted-dim); margin: 14px 0 0; }
 
+/* ── el salto al pago ──
+   Lo inserta reserva.js bajo el estado del formulario, cuando la reserva ya
+   quedó guardada y solo falta pagar. */
+
+.pago { margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); }
+.pago-btn { display: block; text-align: center; text-decoration: none; }
+.pago-btn:hover { text-decoration: none; }
+.pago-aviso { margin: 10px 0 0; font-size: 13px; color: var(--muted-dim); text-align: center; }
+
 .form-status { margin: 14px 0 0; font-size: 15px; font-weight: 500; display: none; }
 .form-status.is-on  { display: block; }
 .form-status.is-ok  { color: var(--good); }

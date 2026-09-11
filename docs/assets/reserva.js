@@ -4,6 +4,10 @@
  *   GET  /cupos   -> { total, restantes, precio, precio_normal }  (contador del hero y del cierre)
  *   POST /reserva -> { ok, estado, cupo, restantes }              (la reserva)
  *
+ * Al reservar, la persona pasa derecho a pagar: se guarda el registro y la página
+ * la manda al link de pago sin salir de acá. El correo con el mismo link queda como
+ * respaldo para quien prefiera pagar después, dentro de las 48 h.
+ *
  * Regla de oro de esta página: si n8n no responde, la página NO se ve rota.
  * El contador se queda con el texto que ya venía en el HTML y el formulario
  * sigue enviable — quien reserva no tiene por qué enterarse de nuestros problemas.
@@ -14,6 +18,11 @@
   var BASE         = 'https://keepsync-hub.app.n8n.cloud/webhook/ebook-apple-ia';
   var URL_CUPOS    = BASE + '/cupos';
   var URL_RESERVA  = BASE + '/reserva';
+
+  /* Respaldo del link de pago. Lo normal es que n8n lo devuelva en `link_pago`;
+     esta copia existe para que el salto al pago no dependa de esa respuesta. */
+  var LINK_PAGO   = 'https://www.webpay.cl/form-pay/420828';
+  var ESPERA_PAGO = 4000;
 
   var TOTAL         = 20;
   var PRECIO        = 25;
@@ -122,17 +131,69 @@
   var MENSAJES = {
     reservado: function (d) {
       return 'Listo. Reservó el cupo #' + d.cupo + ' de ' + TOTAL + ' a USD ' + PRECIO +
-             '. Le enviamos el link de pago por correo: tiene 48 horas para completarlo.';
+             '. Complete el pago acá abajo; el link también le llega por correo.';
     },
     ya_reservado: function (d) {
       return 'Este correo ya tenía reservado el cupo #' + d.cupo +
-             '. Le reenviamos el link de pago, revise su bandeja de entrada.';
+             '. Puede completar el pago acá mismo.';
     },
     lista_espera: function () {
       return 'Los ' + TOTAL + ' cupos a USD ' + PRECIO + ' ya estaban tomados, así que lo dejamos en la ' +
              'lista de espera: le avisamos apenas el ebook salga a su precio normal de USD ' + PRECIO_NORMAL + '.';
     }
   };
+
+  /* ─────────────────────────  salto al pago  ─────────────────────────
+     La reserva ya quedó guardada: de acá la persona se va a pagar. El botón
+     aparece primero y el salto ocurre unos segundos después, para que alcance a
+     leer que su cupo quedó tomado y para no empujar a nadie sin aviso. Si el
+     salto automático falla o el navegador lo bloquea, el botón sigue ahí. */
+
+  function enlacePago(data) {
+    var url = data && data.link_pago;
+    return (typeof url === 'string' && url.indexOf('https://') === 0) ? url : LINK_PAGO;
+  }
+
+  function irAlPago(form, url) {
+    var p = form.querySelector('.form-status');
+    if (!p || !p.parentNode) return;
+
+    var caja = document.createElement('div');
+    caja.className = 'pago';
+
+    var boton = document.createElement('a');
+    boton.className = 'btn-primary pago-btn';
+    boton.href = url;
+    boton.textContent = 'Pagar ahora USD ' + PRECIO;
+
+    var aviso = document.createElement('p');
+    aviso.className = 'pago-aviso';
+
+    caja.appendChild(boton);
+    caja.appendChild(aviso);
+    p.parentNode.insertBefore(caja, p.nextSibling);
+    boton.focus();
+
+    var quedan = Math.round(ESPERA_PAGO / 1000);
+
+    function pintar() {
+      aviso.textContent = quedan > 0
+        ? 'Lo llevamos al pago en ' + quedan + '…'
+        : 'Abriendo el pago…';
+    }
+    pintar();
+
+    var reloj = setInterval(function () {
+      quedan -= 1;
+      pintar();
+      if (quedan > 0) return;
+      clearInterval(reloj);
+      window.location.assign(url);
+    }, 1000);
+
+    /* Si se adelanta y hace clic, no hay que empujarlo dos veces. */
+    boton.addEventListener('click', function () { clearInterval(reloj); });
+  }
 
   function enviar(form) {
     var btn = form.querySelector('.btn-primary');
@@ -165,6 +226,9 @@
         if (btn) btn.textContent = 'Reserva registrada';
 
         if (typeof data.restantes === 'number') pintarCupos(data.restantes);
+
+        /* En lista de espera todavía no hay nada que cobrar. */
+        if (data.estado !== 'lista_espera') irAlPago(form, enlacePago(data));
       })
       .catch(function () {
         if (btn) { btn.disabled = false; btn.textContent = textoBtn; }
