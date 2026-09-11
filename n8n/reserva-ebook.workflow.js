@@ -114,7 +114,7 @@ const CODIGO_DECIDIR = 'const TOTAL = 20;\n'
   + "const html = '<div style=\"' + pila + ';color:#2f2a22;line-height:1.65;max-width:560px\">'\n"
   + '  + cuerpo\n'
   + '  + \'<p style="margin-top:30px;padding-top:18px;border-top:1px solid #e5ded0;color:#6a6255;font-size:14px">\'\n'
-  + "  + 'Rodrigo Figueroa · IA Local Segura en Apple'\n"
+  + "  + 'IA Local Segura en Apple'\n"
   + "  + '</p></div>';\n"
   + '\n'
   + 'return [{\n'
@@ -280,7 +280,7 @@ const correoConfirmacion = node({
       subject: expr('{{ $(\'Decidir cupo y correo\').first().json.asunto }}'),
       emailType: 'html',
       message: expr('{{ $(\'Decidir cupo y correo\').first().json.html }}'),
-      options: { appendAttribution: false, senderName: 'Rodrigo Figueroa' }
+      options: { appendAttribution: false, senderName: 'IA Local Segura en Apple' }
     },
     credentials: { gmailOAuth2: { id: 'cYhcyiH1LcyrXUWz', name: 'Gmail OAuth2 API' } },
     notes: 'Si Gmail falla la reserva ya está guardada y el navegador ya recibió su confirmación.'

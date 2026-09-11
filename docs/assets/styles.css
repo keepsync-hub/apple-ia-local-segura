@@ -74,10 +74,9 @@ b, strong { color: #fff; font-weight: 650; }
 .topbar-in { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 66px; }
 
 .brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
-.brand-foto {
-  width: 26px; height: 26px; border-radius: 50%;
-  object-fit: cover; flex: none;
-  box-shadow: 0 0 0 1.5px rgba(34, 211, 238, .55);
+.brand-mark {
+  width: 24px; height: 24px; flex: none;
+  color: var(--accent);
 }
 
 .topbar-cta {
@@ -366,14 +365,17 @@ b, strong { color: #fff; font-weight: 650; }
 }
 
 @media (max-width: 620px) {
-  /* El nombre del autor es más largo que un logotipo: hay que darle aire a la barra. */
+  /* El título completo es más largo que un logotipo: hay que darle aire a la barra.
+     Desde acá el precio sale del botón —sigue a la vista en el hero, justo abajo—
+     porque marca y precio juntos ya no caben en una sola línea. */
   .brand { font-size: 14.5px; }
   .topbar-cta { font-size: 13px; padding: 8px 12px; }
+  .cta-precio { display: none; }
 }
 
 @media (max-width: 420px) {
-  /* Ya no cabe el precio en la barra; sigue a la vista en el hero, justo abajo. */
-  .cta-precio { display: none; }
+  .brand { font-size: 13px; }
+  .brand-mark { width: 20px; height: 20px; }
   .hero { padding-block: 40px 54px; }
   .band { padding-block: 56px; }
   .field-row { grid-template-columns: 1fr; }
@@ -391,26 +393,13 @@ b, strong { color: #fff; font-weight: 650; }
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
 
-/* ───────────────────────  el autor  ───────────────────────
+/* ───────────────────────  sobre el libro  ───────────────────────
    Va después de las preguntas y antes del cierre: cuando ya se resolvieron las
-   dudas del producto, lo que queda por confiar es en la persona. */
+   dudas del producto, lo que queda es decir para quién está escrito. */
 
 .band-autor { background: var(--bg-alt); }
 
-.autor {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 40px;
-  align-items: center;
-}
-
-.autor-foto {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 0 0 3px var(--bg-alt), 0 0 0 5px rgba(34, 211, 238, .45), 0 18px 40px rgba(0, 0, 0, .5);
-}
+.autor { display: grid; }
 
 .autor-texto { max-width: 62ch; }
 .autor-texto .h2 { margin-bottom: 16px; }
@@ -433,13 +422,9 @@ b, strong { color: #fff; font-weight: 650; }
 .autor-wa:hover { background: rgba(37, 211, 102, .18); }
 .autor-wa svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
 
-@media (max-width: 700px) {
-  .autor { grid-template-columns: 1fr; gap: 24px; justify-items: start; }
-  .autor-foto { width: 132px; height: 132px; }
-}
 
 /* ───────────────────────  burbuja de WhatsApp  ───────────────────────
-   Canal directo con el autor. Va fija sobre la página porque la duda que
+   Canal directo de contacto. Va fija sobre la página porque la duda que
    frena una compra de este tipo aparece leyendo, no al final. */
 
 .wa {
@@ -472,4 +457,10 @@ b, strong { color: #fff; font-weight: 650; }
   /* En pantalla angosta la etiqueta estorba al botón del formulario: solo el círculo. */
   .wa { right: 14px; bottom: 14px; gap: 0; }
   .wa-texto { display: none; }
+}
+
+@media (max-width: 360px) {
+  /* Pantallas muy angostas: el título ya no cabe junto al botón, así que la
+     marca se queda solo con el texto y el chip cede el espacio. */
+  .brand-mark { display: none; }
 }
