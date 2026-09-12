@@ -175,24 +175,43 @@ reenviable y ofrece el WhatsApp del autor como respaldo.
 
 ## Estado
 
-La página está lista para publicar. El backend **todavía no está montado en n8n**: el archivo
-`n8n/reserva-ebook.workflow.js` es el código del workflow listo para importar, y queda **una sola
-cosa pendiente**, marcada como `PENDIENTE` en el archivo (y en una nota adhesiva dentro del propio
-workflow):
+**La landing está publicada y el backend está montado y activo.** El workflow
+`Ebook IA Local Segura en Apple · Reservas (GitHub Pages)` corre en n8n cloud:
 
-1. **Crear la Data Table** `reservas_ebook_apple_ia` con las columnas del `ESQUEMA` y pegar su ID
-   en la constante `TABLA`.
+| Pieza | Valor |
+|---|---|
+| Workflow | `l3iJs9bH4XpqQAWh` — [abrir en n8n](https://keepsync-hub.app.n8n.cloud/workflow/l3iJs9bH4XpqQAWh) |
+| Data Table | `reservas_ebook_apple_ia` → `KPRHxEzOjaL3txG3` |
+| Credencial de correo | Gmail OAuth2 `cYhcyiH1LcyrXUWz`, remitente «IA Local Segura en Apple» |
+| Link de pago | `https://www.webpay.cl/form-pay/420828` |
 
-El link de pago ya está puesto (`https://www.webpay.cl/form-pay/420828`).
+El archivo `n8n/reserva-ebook.workflow.js` sigue siendo la fuente de verdad: es el
+código con el que se creó el workflow, con el ID de la tabla ya pegado en `TABLA`.
+**Si se edita el workflow desde la interfaz de n8n, hay que reflejar el cambio acá**,
+o la próxima importación pisa lo editado.
 
-Ahí mismo viven los precios del ebook (`PRECIO = 25`, `PRECIO_NORMAL = 50`) y el plazo de 48 h.
-Ojo: **los precios están escritos dentro de strings de código** (`CODIGO_DECIDIR` y `CODIGO_CUPOS`),
-y además en el asunto y el botón del correo. Si se mueven, hay que moverlos en los cuatro lugares y
-también en `docs/assets/reserva.js`, que los repite como respaldo para cuando n8n no responde.
+### Cómo se verificó
 
-Mientras el workflow no esté activo, la landing funciona igual: el contador se queda con el texto
-estático y el formulario avisa que no se pudo registrar la reserva, ofreciendo el WhatsApp.
-**La venta del equipo no depende de nada de esto**: sale por WhatsApp y no toca n8n.
+Con la tabla vacía, ejecutando el workflow desde el servidor:
+
+1. `GET /cupos` → `{ total: 20, tomados: 0, restantes: 20, precio: 25, precio_normal: 50 }`.
+2. `POST /reserva` con una reserva de prueba → fila guardada como cupo #1, correo de
+   confirmación efectivamente enviado (Gmail lo devolvió con etiqueta `SENT`) y respuesta
+   al navegador `{ ok: true, estado: "reservado", cupo: 1, restantes: 19, link_pago: "…420828" }`.
+   Ese `link_pago` es el que la página usa para mandar a pagar en el acto.
+3. Fila de prueba borrada y contador de vuelta en 20 de 20.
+
+Ojo con probar los webhooks **por HTTP desde fuera**: n8n cloud rechaza con
+`403 Authorization data is wrong!` las peticiones que no vienen de un navegador normal
+—le pasa igual al workflow del otro ebook, que lleva tiempo funcionando—. Para probar,
+mejor ejecutar el workflow desde n8n o usar la landing de verdad.
+
+### Lo único que no es automático
+
+El pago **se valida a mano**: el formulario de Webpay no avisa de vuelta a n8n, así que
+`pagado` se marca a mano y **un cupo reservado y no pagado queda tomado** hasta que alguien
+lo libere. Con 20 cupos eso se administra mirando la tabla; si el volumen crece, ahí sí
+conviene el workflow de conciliación que está más abajo.
 
 ## Pendiente (fase 2)
 
@@ -206,4 +225,7 @@ estático y el formulario avisa que no se pudo registrar la reserva, ofreciendo 
 - Espejo de la Data Table a un Google Sheet, con un workflow programado aparte. Queda fuera
   del camino de la reserva a propósito: un fallo de credencial ahí no le cuesta una venta a
   nadie. Requiere crear una credencial de Google Sheets en n8n.
-- Conciliación de pagos: marcar `pagado` y liberar los cupos vencidos a las 48 h.
+- **Conciliación de pagos:** marcar `pagado` y liberar los cupos vencidos a las 48 h. Hoy es
+  manual y no se puede automatizar del todo: el formulario de pago no notifica a n8n. Lo que sí
+  se puede hacer es un workflow programado que libere los cupos con más de 48 h y `pagado = false`,
+  dejando la confirmación del pago como el único paso a mano.

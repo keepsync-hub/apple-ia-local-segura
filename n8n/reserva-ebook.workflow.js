@@ -1,8 +1,7 @@
 import { workflow, node, trigger, sticky, expr } from '@n8n/workflow-sdk';
 
-// ID de la Data Table de este ebook. Se crea vacía en n8n (columnas = ESQUEMA) y se
-// pega el ID acá antes de importar el workflow.
-const TABLA = 'PENDIENTE';
+// ID de la Data Table de este ebook, ya creada en n8n con las columnas del ESQUEMA.
+const TABLA = 'KPRHxEzOjaL3txG3';
 const ORIGEN_LANDING = 'https://keepsync-hub.github.io';
 
 const ESQUEMA = [
@@ -99,21 +98,23 @@ const CODIGO_DECIDIR = 'const TOTAL = 20;\n'
   + "  asunto = 'Cupo #' + cupo + ' reservado — complete el pago de USD ' + PRECIO;\n"
   + "  cuerpo = '<p>' + saludo + '</p>'\n"
   + '    + encabezado\n'
-  + "    + '<p>El precio de lanzamiento de <strong>USD ' + PRECIO + '</strong> (en vez de USD ' + PRECIO_NORMAL + ') '\n"
-  + "    + 'queda bloqueado para usted durante <strong>' + HORAS + ' horas</strong>. Pasado ese plazo el cupo se '\n"
-  + "    + 'libera para la siguiente persona de la fila.</p>'\n"
+  + "    + '<p>Al reservar le abrimos la ventana de pago. Si la cerró, o prefirió dejarlo para '\n"
+  + "    + 'después, este es el mismo link: el precio de lanzamiento de <strong>USD ' + PRECIO + '</strong> '\n"
+  + "    + '(en vez de USD ' + PRECIO_NORMAL + ') queda bloqueado para usted durante '\n"
+  + "    + '<strong>' + HORAS + ' horas</strong>. Pasado ese plazo el cupo se libera para la siguiente '\n"
+  + "    + 'persona de la fila.</p>'\n"
   + "    + '<p style=\"margin:28px 0\">'\n"
-  + "    + '<a href=\"' + LINK_PAGO + '\" style=\"background:#f97316;color:#0a0f16;text-decoration:none;'\n"
+  + "    + '<a href=\"' + LINK_PAGO + '\" style=\"background:#0071e3;color:#ffffff;text-decoration:none;'\n"
   + "    + 'font-weight:700;padding:14px 26px;border-radius:9px;display:inline-block\">Pagar USD ' + PRECIO + '</a>'\n"
   + "    + '</p>'\n"
-  + "    + '<p style=\"font-size:13px;color:#6a6255\">Si el botón no le funciona, copie este enlace: '\n"
+  + "    + '<p style=\"font-size:13px;color:#6e6e73\">Si el botón no le funciona, copie este enlace: '\n"
   + "    + '<a href=\"' + LINK_PAGO + '\">' + LINK_PAGO + '</a></p>'\n"
   + "    + '<p>Apenas confirmemos el pago le llega el enlace de descarga (PDF y EPUB) a este mismo correo.</p>';\n"
   + '}\n'
   + '\n'
-  + "const html = '<div style=\"' + pila + ';color:#2f2a22;line-height:1.65;max-width:560px\">'\n"
+  + "const html = '<div style=\"' + pila + ';color:#1d1d1f;line-height:1.65;max-width:560px\">'\n"
   + '  + cuerpo\n'
-  + '  + \'<p style="margin-top:30px;padding-top:18px;border-top:1px solid #e5ded0;color:#6a6255;font-size:14px">\'\n'
+  + '  + \'<p style="margin-top:30px;padding-top:18px;border-top:1px solid #d2d2d7;color:#6e6e73;font-size:14px">\'\n'
   + "  + 'IA Local Segura en Apple'\n"
   + "  + '</p></div>';\n"
   + '\n'
@@ -348,7 +349,7 @@ const responderCupos = node({
 });
 
 const notaPago = sticky(
-  '## Antes de activar\n\n1. Crear la Data Table `reservas_ebook_apple_ia` con las columnas del `ESQUEMA` y pegar su ID en `TABLA`. Es lo único que queda pendiente.\n\nEl link de pago ya está puesto en `LINK_PAGO`, dentro de **Decidir cupo y correo**. Se usa en dos partes: el botón del correo y el campo `link_pago` de la respuesta, que es el que la página usa para mandar a pagar en el acto.',
+  '## Reglas del lanzamiento\n\n20 cupos a **USD 25**. Agotados, la reserva cae en lista de espera a **USD 50**.\n\nEl registro descuenta el cupo; el pago se valida **a mano** en Transbank y no mueve el contador. Ojo: no hay liberación automática, así que un cupo sin pagar queda tomado hasta que se libere a mano.\n\nLos precios y el link de pago son constantes al inicio de **Decidir cupo y correo**. El link sale por dos vías: el botón del correo y el campo `link_pago` de la respuesta, que es el que la landing usa para mandar a pagar en el acto.',
   [decidirCupo],
   { color: 3 }
 );
