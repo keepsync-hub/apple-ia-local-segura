@@ -192,19 +192,28 @@ o la próxima importación pisa lo editado.
 
 ### Cómo se verificó
 
-Con la tabla vacía, ejecutando el workflow desde el servidor:
+Primero ejecutando el workflow desde el servidor y después **por HTTP contra el webhook de
+producción**, que es la ruta que usa la landing de verdad:
 
-1. `GET /cupos` → `{ total: 20, tomados: 0, restantes: 20, precio: 25, precio_normal: 50 }`.
-2. `POST /reserva` con una reserva de prueba → fila guardada como cupo #1, correo de
-   confirmación efectivamente enviado (Gmail lo devolvió con etiqueta `SENT`) y respuesta
-   al navegador `{ ok: true, estado: "reservado", cupo: 1, restantes: 19, link_pago: "…420828" }`.
-   Ese `link_pago` es el que la página usa para mandar a pagar en el acto.
-3. Fila de prueba borrada y contador de vuelta en 20 de 20.
+| Prueba | Resultado |
+|---|---|
+| `GET /cupos` | `{ total: 20, tomados: 0, restantes: 20, precio: 25, precio_normal: 50 }` |
+| `POST /reserva` con la trampa `website` llena | `200 {"message":"Webhook call received"}` y **ninguna fila**: el filtro descarta antes de ejecutar un nodo |
+| `POST /reserva` con un correo mal formado | Igual: descartado |
+| `POST /reserva` válido | `{ ok: true, estado: "reservado", cupo: 1, restantes: 19, link_pago: "…420828" }`, fila guardada y correo enviado (Gmail lo devolvió con etiqueta `SENT`) |
 
-Ojo con probar los webhooks **por HTTP desde fuera**: n8n cloud rechaza con
-`403 Authorization data is wrong!` las peticiones que no vienen de un navegador normal
-—le pasa igual al workflow del otro ebook, que lleva tiempo funcionando—. Para probar,
-mejor ejecutar el workflow desde n8n o usar la landing de verdad.
+Ese `link_pago` de la respuesta es el que la página usa para mandar a pagar en el acto. Las
+filas de prueba se borraron después y el contador quedó en 20 de 20.
+
+**Si prueba el webhook con `curl` y le responde `403 Authorization data is wrong!`, no está
+roto**: el webhook lleva `ignoreBots: true` y el `User-Agent` de curl cae como bot. Con un
+`User-Agent` de navegador responde 200 normal:
+
+```bash
+curl -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Safari/605.1.15" \
+  -H "Origin: https://keepsync-hub.github.io" \
+  https://keepsync-hub.app.n8n.cloud/webhook/ebook-apple-ia/cupos
+```
 
 ### Lo único que no es automático
 
@@ -212,6 +221,11 @@ El pago **se valida a mano**: el formulario de Webpay no avisa de vuelta a n8n, 
 `pagado` se marca a mano y **un cupo reservado y no pagado queda tomado** hasta que alguien
 lo libere. Con 20 cupos eso se administra mirando la tabla; si el volumen crece, ahí sí
 conviene el workflow de conciliación que está más abajo.
+
+Para borrar filas de prueba hay un workflow desechable archivado en n8n
+(**Limpieza · filas de prueba (apple-ia)**), que borra lo que tenga `origen = prueba-tecnica`
+—un valor que ninguna reserva real puede traer, porque la landing manda `hero` o `cierre`—.
+Está archivado a propósito: para usarlo hay que desarchivarlo primero.
 
 ## Pendiente (fase 2)
 
