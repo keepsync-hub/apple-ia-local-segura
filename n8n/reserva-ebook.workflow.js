@@ -84,32 +84,32 @@ const CODIGO_DECIDIR = 'const TOTAL = 20;\n'
   + 'let asunto, cuerpo;\n'
   + '\n'
   + "if (estadoRespuesta === 'lista_espera') {\n"
-  + "  asunto = 'Quedó en la lista de espera — IA Local Segura en Apple';\n"
+  + "  asunto = 'Quedaste en la lista de espera — IA Local Segura en Apple';\n"
   + "  cuerpo = '<p>' + saludo + '</p>'\n"
-  + "    + '<p>Las ' + TOTAL + ' copias del precio de lanzamiento ya estaban tomadas cuando llegó su '\n"
-  + "    + 'reserva, así que lo dejamos en la <strong>lista de espera</strong>.</p>'\n"
-  + "    + '<p>Le escribimos apenas el ebook <strong>IA Local Segura en Apple</strong> esté disponible a su '\n"
-  + "    + 'precio normal de <strong>USD ' + PRECIO_NORMAL + '</strong>. No tiene que hacer nada más.</p>';\n"
+  + "    + '<p>Las ' + TOTAL + ' copias del precio de lanzamiento ya estaban tomadas cuando llegó tu '\n"
+  + "    + 'reserva, así que te dejamos en la <strong>lista de espera</strong>.</p>'\n"
+  + "    + '<p>Te escribimos apenas el ebook <strong>IA Local Segura en Apple</strong> esté disponible a su '\n"
+  + "    + 'precio normal de <strong>USD ' + PRECIO_NORMAL + '</strong>. No tienes que hacer nada más.</p>';\n"
   + '} else {\n'
   + "  const encabezado = estadoRespuesta === 'ya_reservado'\n"
-  + "    ? '<p>Su correo ya tenía reservado el <strong>cupo #' + cupo + '</strong>, así que le reenviamos el link de pago.</p>'\n"
-  + "    : '<p>Su reserva quedó tomada: <strong>cupo #' + cupo + ' de ' + TOTAL + '</strong>.</p>';\n"
+  + "    ? '<p>Tu correo ya tenía reservado el <strong>cupo #' + cupo + '</strong>, así que te reenviamos el link de pago.</p>'\n"
+  + "    : '<p>Tu reserva quedó tomada: <strong>cupo #' + cupo + ' de ' + TOTAL + '</strong>.</p>';\n"
   + '\n'
-  + "  asunto = 'Cupo #' + cupo + ' reservado — complete el pago de USD ' + PRECIO;\n"
+  + "  asunto = 'Cupo #' + cupo + ' reservado — completa el pago de USD ' + PRECIO;\n"
   + "  cuerpo = '<p>' + saludo + '</p>'\n"
   + '    + encabezado\n'
-  + "    + '<p>Al reservar le abrimos la ventana de pago. Si la cerró, o prefirió dejarlo para '\n"
+  + "    + '<p>Al reservar te abrimos la ventana de pago. Si la cerraste, o preferiste dejarlo para '\n"
   + "    + 'después, este es el mismo link: el precio de lanzamiento de <strong>USD ' + PRECIO + '</strong> '\n"
-  + "    + '(en vez de USD ' + PRECIO_NORMAL + ') queda bloqueado para usted durante '\n"
+  + "    + '(en vez de USD ' + PRECIO_NORMAL + ') queda bloqueado para ti durante '\n"
   + "    + '<strong>' + HORAS + ' horas</strong>. Pasado ese plazo el cupo se libera para la siguiente '\n"
   + "    + 'persona de la fila.</p>'\n"
   + "    + '<p style=\"margin:28px 0\">'\n"
   + "    + '<a href=\"' + LINK_PAGO + '\" style=\"background:#0071e3;color:#ffffff;text-decoration:none;'\n"
   + "    + 'font-weight:700;padding:14px 26px;border-radius:9px;display:inline-block\">Pagar USD ' + PRECIO + '</a>'\n"
   + "    + '</p>'\n"
-  + "    + '<p style=\"font-size:13px;color:#6e6e73\">Si el botón no le funciona, copie este enlace: '\n"
+  + "    + '<p style=\"font-size:13px;color:#6e6e73\">Si el botón no te funciona, copia este enlace: '\n"
   + "    + '<a href=\"' + LINK_PAGO + '\">' + LINK_PAGO + '</a></p>'\n"
-  + "    + '<p>Apenas confirmemos el pago le llega el enlace de descarga (PDF y EPUB) a este mismo correo.</p>';\n"
+  + "    + '<p>Apenas confirmemos el pago te llega el enlace de descarga (PDF y EPUB) a este mismo correo.</p>';\n"
   + '}\n'
   + '\n'
   + "const html = '<div style=\"' + pila + ';color:#1d1d1f;line-height:1.65;max-width:560px\">'\n"
@@ -215,7 +215,7 @@ const decidirCupo = node({
     precio_usd: 25,
     pagado: false,
     origen: 'hero',
-    asunto: 'Cupo #1 reservado — complete el pago de USD 25',
+    asunto: 'Cupo #1 reservado — completa el pago de USD 25',
     html: '<div>…</div>',
     respuesta: { ok: true, estado: 'reservado', cupo: 1, restantes: 19, link_pago: 'https://www.webpay.cl/form-pay/420828' }
   }]

@@ -81,7 +81,7 @@
         if (btn) btn.textContent = 'Anotarme en la lista de espera';
         var micro = form.querySelector('.microcopy');
         if (micro) {
-          micro.innerHTML = '<b>El precio de lanzamiento se agotó.</b> Le avisamos apenas el ebook esté ' +
+          micro.innerHTML = '<b>El precio de lanzamiento se agotó.</b> Te avisamos apenas el ebook esté ' +
                             'disponible a su precio normal de USD ' + PRECIO_NORMAL + '.';
         }
       });
@@ -119,8 +119,8 @@
     if (malos.length) {
       malos[0].focus();
       estado(form, 'err', malos[0] === consent
-        ? 'Necesitamos su autorización para escribirle y coordinar el pago.'
-        : 'Revise los campos marcados: falta completar alguno o el correo no es válido.');
+        ? 'Necesitamos tu autorización para escribirte y coordinar el pago.'
+        : 'Revisa los campos marcados: falta completar alguno o el correo no es válido.');
       return false;
     }
     return true;
@@ -130,16 +130,16 @@
 
   var MENSAJES = {
     reservado: function (d) {
-      return 'Listo. Reservó el cupo #' + d.cupo + ' de ' + TOTAL + ' a USD ' + PRECIO +
-             '. Complete el pago acá abajo; el link también le llega por correo.';
+      return 'Listo. Reservaste el cupo #' + d.cupo + ' de ' + TOTAL + ' a USD ' + PRECIO +
+             '. Completa el pago acá abajo; el link también te llega por correo.';
     },
     ya_reservado: function (d) {
       return 'Este correo ya tenía reservado el cupo #' + d.cupo +
-             '. Puede completar el pago acá mismo.';
+             '. Puedes completar el pago acá mismo.';
     },
     lista_espera: function () {
-      return 'Los ' + TOTAL + ' cupos a USD ' + PRECIO + ' ya estaban tomados, así que lo dejamos en la ' +
-             'lista de espera: le avisamos apenas el ebook salga a su precio normal de USD ' + PRECIO_NORMAL + '.';
+      return 'Los ' + TOTAL + ' cupos a USD ' + PRECIO + ' ya estaban tomados, así que te dejamos en la ' +
+             'lista de espera: te avisamos apenas el ebook salga a su precio normal de USD ' + PRECIO_NORMAL + '.';
     }
   };
 
@@ -178,7 +178,7 @@
 
     function pintar() {
       aviso.textContent = quedan > 0
-        ? 'Lo llevamos al pago en ' + quedan + '…'
+        ? 'Te llevamos al pago en ' + quedan + '…'
         : 'Abriendo el pago…';
     }
     pintar();
@@ -200,7 +200,7 @@
     var textoBtn = btn ? btn.textContent : '';
 
     if (btn) { btn.disabled = true; btn.textContent = 'Reservando…'; }
-    estado(form, 'wait', 'Guardando su reserva…');
+    estado(form, 'wait', 'Guardando tu reserva…');
 
     var cuerpo = {
       nombre:         form.elements.nombre.value.trim(),
@@ -233,7 +233,7 @@
       .catch(function () {
         if (btn) { btn.disabled = false; btn.textContent = textoBtn; }
         estado(form, 'err',
-          'No pudimos registrar la reserva. Vuelva a intentarlo en un momento, o escríbanos por ' +
+          'No pudimos registrar la reserva. Vuelve a intentarlo en un momento, o escríbenos por ' +
           'WhatsApp con el botón verde y la tomamos a mano.');
       });
   }
