@@ -20,12 +20,21 @@ mismo flujo de reserva y mismo despliegue. Cambian el contenido, la paleta y las
 
 ## Cómo se describe el agente
 
-El agente se cuenta **solo por sus beneficios** —recuerda, aprende su forma de trabajar, da
+El agente se cuenta **solo por sus beneficios** —recuerda, aprende tu forma de trabajar, da
 seguimiento— con un ejemplo concreto de oficina en cada uno, y el cierre que lo diferencia: un
 chatbot público olvida y aprende para su dueño; este recuerda y aprende para quien lo usa, y lo
 aprendido no sale del equipo. **No se nombra ningún proveedor de modelo ni proyecto de origen**,
 ni en la página ni acá. Si alguna vez hay que cambiar la pieza de software que hay debajo, la
 página no se toca.
+
+## Cómo se le habla a quien lee
+
+**Se tutea.** La página, los mensajes del formulario y el correo de confirmación tratan de **tú**
+a quien reserva: «reserva tu copia», «te llega por correo», «escríbenos». Conviene revisarlo al
+editar, porque el registro se rompe con una sola frase suelta en usted. La única aparición
+deliberada de «usted» es el ejemplo del pilar *Aprende tu forma de trabajar* («a los clientes se
+les trata de usted»): ahí la palabra es el criterio que el agente aprende, no la forma de hablarle
+a quien lee.
 
 ## Los precios que aparecen
 
@@ -205,7 +214,7 @@ producción**, que es la ruta que usa la landing de verdad:
 Ese `link_pago` de la respuesta es el que la página usa para mandar a pagar en el acto. Las
 filas de prueba se borraron después y el contador quedó en 20 de 20.
 
-**Si prueba el webhook con `curl` y le responde `403 Authorization data is wrong!`, no está
+**Si pruebas el webhook con `curl` y te responde `403 Authorization data is wrong!`, no está
 roto**: el webhook lleva `ignoreBots: true` y el `User-Agent` de curl cae como bot. Con un
 `User-Agent` de navegador responde 200 normal:
 
